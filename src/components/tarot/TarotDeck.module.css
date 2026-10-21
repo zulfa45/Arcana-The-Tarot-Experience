@@ -1,0 +1,98 @@
+.deckContainer {
+  position: relative;
+  width: 220px;
+  height: 374px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .deckContainer {
+    width: 180px;
+    height: 306px;
+  }
+}
+
+.deckContainer:focus-visible .deckStack {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-lg);
+}
+
+.deckContainer.isDisabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.deckGlowRing {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 123, 255, 0.25) 0%, rgba(217, 181, 109, 0.15) 40%, transparent 70%);
+  filter: blur(15px);
+  pointer-events: none;
+  animation: celestialPulse 4s infinite ease-in-out;
+}
+
+.deckStack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.deckContainer:not(.isDisabled):hover .deckStack {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.cardInStack {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 10px rgba(155, 123, 255, 0.1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.topCard {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(217, 181, 109, 0.2);
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: calc(var(--radius-lg) - 2px);
+  padding: 4px;
+}
+
+.cardBorderOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(217, 181, 109, 0.3);
+  pointer-events: none;
+}
+
+.deckShadow {
+  position: absolute;
+  bottom: -20px;
+  width: 80%;
+  height: 25px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.isShuffling .deckGlowRing {
+  background: radial-gradient(circle, rgba(217, 181, 109, 0.4) 0%, rgba(155, 123, 255, 0.3) 50%, transparent 75%);
+  filter: blur(25px);
+  animation: celestialPulse 1s infinite ease-in-out;
+}

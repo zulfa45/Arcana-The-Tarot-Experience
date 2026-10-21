@@ -1,0 +1,991 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Deck Data: Suit of Wands (14 Cards: Ace to King)
+Element of Fire: Passion, Willpower, Vision, Creativity, Ambition, Leadership.
+"""
+
+WANDS_CARDS = [
+    {
+        "id": "ace-of-wands",
+        "name": "Ace of Wands",
+        "slug": "ace-of-wands",
+        "image": "/assets/tarot/cards/Ace of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "Ace",
+        "uprightKeywords": ["Percikan Inspirasi", "Gairah Baru", "Peluang Kreatif", "Energi Membara", "Potensi Aksi"],
+        "reversedKeywords": ["Penundaan Ide", "Kehilangan Gairah", "Ragu Memulai", "Energi Terblokir"],
+        "description": "Sebuah tangan ilahi muncul dari awan menggenggam tongkat kayu bertunas daun hijau di atas bentang alam yang subur. Ace of Wands melambangkan percikan api kreativitas murni, inspirasi segar, dan dorongan kuat untuk memulai inisiatif baru.",
+        "readings": {
+            "love": {
+                "title": "Percikan Asmara yang Membara",
+                "summary": "Munculnya ketertarikan yang intens, gairah baru, atau percikan romantis yang menyala.",
+                "meaning": "Ace of Wands menandakan awal dari ketertarikan asmara yang penuh gairah dan antusiasme. Jika lajang, ada chemistry yang menyengat dengan seseorang yang baru. Bagi yang berpasangan, kartu ini membawa penyegaran intim dan semangat baru untuk melakukan petualangan berdua.",
+                "advice": "Ikuti percikan rasa penasaranmu; jangan ragu mengambil langkah pertama untuk menyapa atau mengajak kencan.",
+                "reflectionQuestion": "Apa yang dapat kamu lakukan untuk menyalakan kembali gairah cinta dalam hidupmu?",
+                "keywords": ["Gairah Baru", "Chemistry Kuat", "Inisiatif Cinta", "Ketertarikan Intens"]
+            },
+            "work": {
+                "title": "Gagasan Segar dan Inisiatif Proaktif",
+                "summary": "Mendapatkan ide proyek inovatif yang membakar semangat kerja.",
+                "meaning": "Di lingkungan kerja, Ace of Wands adalah sinyal datangnya peluang baru atau proyek menantang yang memicu kreativitasmu. Energimu sedang tinggi untuk membuktikan kemampuan dan menghasilkan terobosan nyata.",
+                "advice": "Tangkap ide yang muncul di kepalamu segera; buat catatan konsep dan ajukan kepada tim dengan percaya diri.",
+                "reflectionQuestion": "Ide inovatif apa yang saat ini paling ingin kamu wujudkan di tempat kerja?",
+                "keywords": ["Ide Inovatif", "Antusiasme", "Proaktif", "Peluang Kerja"]
+            },
+            "career": {
+                "title": "Pintu Peluang dan Arah Baru yang Menjanjikan",
+                "summary": "Titik tolak merintis usaha mandiri atau meluncurkan karya monumental.",
+                "meaning": "Karier di bawah pengaruh kartu ini menandakan waktu terbaik untuk mengambil inisiatif. Kamu memiliki dorongan internal yang kuat untuk memulai babak baru, baik itu membuka bisnis sampingan, melamar pekerjaan impian, atau memimpin inisiatif strategis.",
+                "advice": "Manfaatkan momentum energi ini; jangan tunda langkah awalmu karena keraguan analitis yang berlebihan.",
+                "reflectionQuestion": "Langkah awal apa yang paling krusial untuk meluncurkan impian kariermu saat ini?",
+                "keywords": ["Langkah Awal", "Memulai Usaha", "Energi Ambisi", "Titik Tolak"]
+            },
+            "finance": {
+                "title": "Peluang Menghasilkan Nilai Ekonomi Baru",
+                "summary": "Peluang bisnis atau sumber penghasilan tambahan yang menjanjikan.",
+                "meaning": "Secara finansial, Ace of Wands menunjukkan potensi aliran dana baru yang lahir dari ide kreatif atau keberanian berwirausaha. Meskipun masih dalam tahap awal (benih), potensi keuntungannya sangat menjanjikan jika dirawat dengan tekun.",
+                "advice": "Ubah ide kreatifmu menjadi produk atau jasa yang memiliki nilai nyata; mulai dengan modal terukur.",
+                "reflectionQuestion": "Keahlian kreatif apa yang bisa kamu monetisasi menjadi sumber penghasilan baru?",
+                "keywords": ["Peluang Usaha", "Benih Cuan", "Monetisasi Kreatif", "Potensi Rezeki"]
+            },
+            "selfGrowth": {
+                "title": "Membangkitkan Api Antusiasme Hidup",
+                "summary": "Menemukan kembali semangat yang sempat redup dan berani mengekspresikan diri.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang menyalakan kembali api batin (inner fire). Kamu merasa terdorong keluar dari zona nyaman dan mencoba hal-hal yang membuat detak jantungmu bersemangat. Rangkul rasa antusiasme ini sebagai panduan hidup.",
+                "advice": "Lakukan hal yang membuatmu merasa berenergi dan hidup; jangan biarkan rasa takut gagal memadamkan apimu.",
+                "reflectionQuestion": "Aktivitas apa yang paling membuat jiwamu merasa bersemangat dan bergairah?",
+                "keywords": ["Inner Fire", "Antusiasme Jiwa", "Zona Nyaman", "Ekspresi Diri"]
+            },
+            "relationships": {
+                "title": "Aktivitas Seru Bersama Sahabat dan Keluarga",
+                "summary": "Menginisiasi petualangan atau hobi baru yang mempererat kebersamaan.",
+                "meaning": "Dalam pergaulan dan keluarga, kamu menjadi penggerak utama yang membawa ide-ide kegiatan menyenangkan. Mengajak teman mendaki, mencoba kuliner baru, atau merencanakan liburan keluarga akan menciptakan kenangan yang hangat dan berenergi.",
+                "advice": "Jadilah pemrakarsa kegiatan seru; tularkan energimu yang bersemangat kepada orang-orang di sekitarmu.",
+                "reflectionQuestion": "Kegiatan seru apa yang bisa kamu rancang untuk dinikmati bersama teman atau keluarga akhir pekan ini?",
+                "keywords": ["Inisiator Seru", "Petualangan Bersama", "Energi Ceria", "Kebersamaan Hangat"]
+            },
+            "spirituality": {
+                "title": "Percikan Ilahi dan Kebangkitan Daya Kreasi",
+                "summary": "Menyadari bahwa daya kreativitasmu adalah cerminan dari Sang Maha Pencipta.",
+                "meaning": "Secara spiritual, Ace of Wands adalah 'ruang napas Tuhan' yang menyalakan jiwa manusia dengan daya cipta. Setiap kali kamu berkarya dengan niat murni, kamu sedang menjadi saluran bagi kehendak ilahi untuk memperindah alam semesta.",
+                "advice": "Niatkan setiap karya dan usahamu sebagai bentuk ibadah dan pengabdian kepada Sang Pencipta.",
+                "reflectionQuestion": "Bagaimana caramu menjadikan daya kreativitasmu sebagai bentuk ibadah nyata?",
+                "keywords": ["Daya Cipta Ilahi", "Percikan Suci", "Ibadah Karya", "Saluran Rahmat"]
+            }
+        }
+    },
+    {
+        "id": "two-of-wands",
+        "name": "Two of Wands",
+        "slug": "two-of-wands",
+        "image": "/assets/tarot/cards/Two of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "2",
+        "uprightKeywords": ["Perencanaan Masa Depan", "Visi Luas", "Eksplorasi Global", "Keputusan Berani", "Melangkah Keluar"],
+        "reversedKeywords": ["Ragu Mengambil Langkah", "Takut Keluar Zona Nyaman", "Perencanaan Buruk", "Peluang Terlewat"],
+        "description": "Seorang pria berdiri di atas benteng kastel memegang bola dunia kecil di tangan kanannya dan satu tongkat di tangan kiri, memandang ke arah laut luas dan pegunungan di kejauhan. Two of Wands melambangkan visi strategis, perencanaan ekspansi, dan keputusan untuk melangkah lebih jauh dari zona aman.",
+        "readings": {
+            "love": {
+                "title": "Merencanakan Masa Depan Hubungan",
+                "summary": "Membicarakan arah jangka panjang dan komitmen masa depan bersama pasangan.",
+                "meaning": "Two of Wands mengajakmu dan pasangan untuk melihat ke cakrawala yang lebih luas. Apakah kalian siap melangkah ke jenjang berikutnya: bertunangan, menikah, atau pindah ke kota baru bersama? Hubungan ini menuntut visi bersama yang matang dan keberanian mengambil keputusan bersama.",
+                "advice": "Diskusikan rencana lima tahun ke depan bersama pasangan; selaraskan impian pribadi dengan masa depan bersama.",
+                "reflectionQuestion": "Visi masa depan seperti apa yang ingin kamu bangun bersama pasanganmu?",
+                "keywords": ["Visi Asmara", "Rencana Jangka Panjang", "Komitmen Masa Depan", "Keputusan Bersama"]
+            },
+            "work": {
+                "title": "Penyusunan Rencana Strategis dan Ekspansi",
+                "summary": "Membuat roadmap kerja yang visioner dan mempersiapkan langkah ekspansi.",
+                "meaning": "Di lingkungan kerja, saatnya beralih dari ide ke perencanaan konkret. Kamu berada pada posisi strategis untuk menyusun roadmap, memetakan potensi pasar, atau memilih mitra kerja sama untuk memperluas jangkauan proyekmu.",
+                "advice": "Riset pasar dengan cermat dan buat rencana cadangan (kontinjensi) sebelum mengeksekusi ekspansi.",
+                "reflectionQuestion": "Langkah strategis apa yang perlu dipersiapkan agar proyek kerjamu dapat menjangkau skala lebih besar?",
+                "keywords": ["Roadmap Kerja", "Perencanaan Strategis", "Ekspansi Proyek", "Analisis Pasar"]
+            },
+            "career": {
+                "title": "Memilih Peluang Karier dan Peluang Internasional",
+                "summary": "Menimbang tawaran baru yang menantang batas kemampuan profesionalmu.",
+                "meaning": "Karier di bawah pengaruh kartu ini menandakan momen menimbang pilihan. Kamu mungkin mempertimbangkan studi ke luar negeri, pindah ke perusahaan multinasional, atau memperluas bisnis ke ranah regional. Dunia sedang menanti langkah beranimu.",
+                "advice": "Pilihlah opsi yang memberikan ruang pertumbuhan jangka panjang terbesar, meski menuntut adaptasi tinggi.",
+                "reflectionQuestion": "Peluang profesional besar apa yang saat ini membuatmu merasa tertantang sekaligus ragu?",
+                "keywords": ["Pilihan Karier", "Jangkauan Global", "Pertumbuhan Panjang", "Keberanian Memilih"]
+            },
+            "finance": {
+                "title": "Diversifikasi Investasi dan Alokasi Modal",
+                "summary": "Menyiapkan modal untuk rencana investasi jangka menengah dan panjang.",
+                "meaning": "Secara finansial, Two of Wands menyarankan diversifikasi portofolio. Jangan menaruh seluruh dana dalam satu instrumen. Pertimbangkan alokasi untuk instrumen investasi global, properti, atau pengembangan bisnis yang berpotensi menghasilkan imbal hasil stabil di masa depan.",
+                "advice": "Konsultasikan rencana alokasi aset dengan ahli; rencanakan arus kas untuk kebutuhan modal ekspansi.",
+                "reflectionQuestion": "Apakah portofolio investasimu sudah cukup terdiversifikasi untuk memitigasi risiko masa depan?",
+                "keywords": ["Diversifikasi Aset", "Perencanaan Modal", "Investasi Strategis", "Alokasi Cerdas"]
+            },
+            "selfGrowth": {
+                "title": "Memperluas Horizon Pikiran dan Menembus Batas",
+                "summary": "Menantang asumsi diri sendiri dan berani membayangkan potensi yang lebih luas.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang melebarkan zona nyaman. Kamu diajak belajar bahasa baru, membaca buku-buku wawasan global, dan membayangkan kehidupan di luar kebiasaan lama. Dunia ini begitu luas; jangan membatasi dirimu di dalam tembok kastel pikiranmu sendiri.",
+                "advice": "Tantang batasan dirimu; beranikan diri bermimpi lebih besar dan susun rencana nyata untuk mencapainya.",
+                "reflectionQuestion": "Keyakinan sempit apa tentang dirimu yang selama ini membatasi impian terbesarmu?",
+                "keywords": ["Horizon Luas", "Membongkar Batas", "Mimpi Besar", "Visi Global"]
+            },
+            "relationships": {
+                "title": "Menjalin Hubungan Lintas Batas dan Kunjungan",
+                "summary": "Merawat koneksi jarak jauh dan merencanakan reuni keluarga yang bermakna.",
+                "meaning": "Dalam pergaulan dan keluarga, Two of Wands sering kali terhubung dengan hubungan jarak jauh (LDR) atau pertemanan lintas kota/negara. Komunikasi teknologi memudahkanmu menjaga kehangatan, dan kini saatnya merencanakan kunjungan nyata.",
+                "advice": "Jaga silaturahmi dengan kerabat atau sahabat yang berada jauh; atur jadwal temu yang menyenangkan.",
+                "reflectionQuestion": "Siapa sahabat atau kerabat di tempat jauh yang sudah lama ingin kamu kunjungi atau hubungi?",
+                "keywords": ["Koneksi Jarak Jauh", "Rencana Kunjungan", "Silaturahmi Luas", "Persahabatan Global"]
+            },
+            "spirituality": {
+                "title": "Melihat Kebesaran Ciptaan dari Ketinggian Menara Batin",
+                "summary": "Merenungi keteraturan kosmis dan peran jiwamu di panggung semesta.",
+                "meaning": "Secara spiritual, kartu ini adalah ajakan bertafakur tentang keagungan penciptaan. Dari puncak menara kesadaran, kamu melihat bahwa bumi ini hanyalah sebagian kecil dari kemahakuasaan Tuhan. Jiwamu terpanggil untuk menjelajah dan memahami hikmah di balik perbedaan umat manusia.",
+                "advice": "Pandanglah kehidupan dengan kacamata universal; pelajari kearifan dari berbagai tradisi dengan rasa hormat.",
+                "reflectionQuestion": "Bagaimana caramu memandang perbedaan manusia sebagai bukti keindahan ciptaan Tuhan?",
+                "keywords": ["Tafakur Kosmis", "Kearifan Universal", "Menara Kesadaran", "Hikmah Ilahi"]
+            }
+        }
+    },
+    {
+        "id": "three-of-wands",
+        "name": "Three of Wands",
+        "slug": "three-of-wands",
+        "image": "/assets/tarot/cards/Three of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "3",
+        "uprightKeywords": ["Kemajuan Nyata", "Kapal yang Datang", "Ekspansi Berhasil", "Optimisme Masa Depan", "Peluang Usaha"],
+        "reversedKeywords": ["Keterlambatan Logistik", "Harapan Meleset", "Rintangan Tak Terduga", "Kurang Koordinasi"],
+        "description": "Seorang pria berpakaian jubah merah dan hijau berdiri membelakangi kita memandang kapal-kapal dagang yang berlayar melintasi samudra emas. Tiga tongkat tertancap kokoh di tanah di sampingnya. Three of Wands melambangkan kemajuan nyata, kapal-kapal usaha yang mulai berlayar dan pulang membawa hasil, serta optimisme ekspansi.",
+        "readings": {
+            "love": {
+                "title": "Perjalanan Cinta dan Horizon Bersama",
+                "summary": "Melangkah bersama pasangan menuju fase petualangan dan kepastian masa depan.",
+                "meaning": "Three of Wands membawa kabar baik bahwa hubunganmu sedang melaju ke arah yang tepat. Usaha yang telah kalian bangun bersama mulai menunjukkan hasil yang harmonis. Ada rencana perjalanan bersama, relokasi, atau komitmen yang semakin mantap untuk menatap masa depan bersama.",
+                "advice": "Teruslah mendayung bersama pasangan; rayakan setiap kemajuan kecil dalam hubungan dengan rasa syukur.",
+                "reflectionQuestion": "Petualangan atau tujuan hidup bersama apa yang paling ingin kalian capai berdua tahun ini?",
+                "keywords": ["Melaju Maju", "Perjalanan Bersama", "Kemajuan Asmara", "Optimisme Masa Depan"]
+            },
+            "work": {
+                "title": "Hasil Awal yang Menjanjikan dan Kolaborasi Luas",
+                "summary": "Proyek mulai membuahkan hasil dan pintu kerja sama baru semakin terbuka lebar.",
+                "meaning": "Di tempat kerja, benih kerja kerasmu mulai menampakkan buahnya. Klien merespons positif, pengiriman berjalan lancar, dan jaringan kemitraanmu semakin solid. Ini adalah waktu yang tepat untuk memperluas jangkauan operasional proyekmu.",
+                "advice": "Pantau proses kerja secara konsisten dan bersiaplah menyambut lonjakan permintaan atau tanggung jawab baru.",
+                "reflectionQuestion": "Mitra kerja atau saluran kolaborasi mana yang paling potensial untuk diajak ekspansi kerja sama?",
+                "keywords": ["Hasil Menjanjikan", "Ekspansi Operasi", "Jaringan Kemitraan", "Momentum Kerja"]
+            },
+            "career": {
+                "title": "Kapal Karier Mulai Berlabuh Membawa Keberhasilan",
+                "summary": "Pengakuan atas inisiatif masa lalu dan terbukanya peluang karier di kancah lebih luas.",
+                "meaning": "Karier di bawah pengaruh Three of Wands menandakan fase panen awal. Lamaran kerja, proposal bisnis, atau karya yang kamu kirimkan beberapa waktu lalu kini mulai membuahkan respons positif. Reputasimu mulai dikenal di luar lingkaran terdekatmu.",
+                "advice": "Tetaplah berdiri di anjungan kapal kariermu dengan percaya diri; arahkan langkahmu menuju pencapaian yang lebih tinggi.",
+                "reflectionQuestion": "Bagaimana kamu memanfaatkan keberhasilan awal ini untuk membuka gerbang karier yang lebih bergengsi?",
+                "keywords": ["Panen Awal", "Kapal Berlabuh", "Pengakuan Luas", "Langkah Percaya Diri"]
+            },
+            "finance": {
+                "title": "Arus Imbal Hasil dan Keberhasilan Usaha Dagang",
+                "summary": "Pendapatan dari investasi atau bisnis mulai masuk ke rekening dengan stabil.",
+                "meaning": "Secara keuangan, kartu ini melambangkan 'kapal dagang yang pulang membawa muatan berharga'. Usaha atau investasi yang kamu tanam di masa lalu kini mulai memberikan return on investment (ROI). Arus kasmu berada pada tren pertumbuhan yang sangat sehat.",
+                "advice": "Gunakan sebagian keuntungan untuk memperkuat modal kerja dan sisihkan sebagian untuk cadangan aset likuid.",
+                "reflectionQuestion": "Apakah kamu sudah menyiapkan strategi reinvestasi yang cerdas untuk mengelola keuntunganmu?",
+                "keywords": ["Imbal Hasil", "ROI Positif", "Arus Kas Tumbuh", "Muatan Berharga"]
+            },
+            "selfGrowth": {
+                "title": "Melihat Hasil Nyata dari Kedisiplinan Pribadi",
+                "summary": "Merasakan keyakinan diri yang menguat setelah melewati fase keraguan awal.",
+                "meaning": "Pengembangan diri kartu ini adalah kepuasan melihat perubahan nyata dalam dirimu. Kebiasaan baik yang kamu rintis beberapa bulan lalu mulai membentuk tubuh yang lebih bugar, pikiran yang lebih jernih, dan ketahanan emosional yang lebih mantap. Kamu merasa siap menghadapi tantangan apa pun.",
+                "advice": "Apresiasi dirimu atas ketekunan yang telah kamu tunjukkan; jadikan ini bukti bahwa kamu mampu bertumbuh.",
+                "reflectionQuestion": "Kemajuan pribadi apa yang paling membuatmu bangga atas proses yang telah kamu lalui?",
+                "keywords": ["Bukti Nyata", "Ketekunan Diri", "Keyakinan Diri", "Pertumbuhan Terbukti"]
+            },
+            "relationships": {
+                "title": "Dukungan Sahabat dalam Mewujudkan Impian",
+                "summary": "Dikelilingi oleh lingkaran pertemanan yang saling menyemangati pencapaian satu sama lain.",
+                "meaning": "Dalam pergaulan dan keluarga, Three of Wands membawa kabar baik tentang reuni atau kabar bahagia dari kerabat di kejauhan. Sahabat-sahabatmu merayakan keberhasilanmu tanpa rasa dengki, menciptakan lingkungan sosial yang suportif dan membanggakan.",
+                "advice": "Berbagilah kabar gembiramu dengan rendah hati; jadilah sahabat yang senantiasa mendoakan kesuksesan orang lain.",
+                "reflectionQuestion": "Siapa sahabat yang paling layak kamu hubungi untuk berbagi rasa syukur atas kabar baik hari ini?",
+                "keywords": ["Kabar Bahagia", "Lingkaran Suportif", "Merayakan Bersama", "Doa Tulus"]
+            },
+            "spirituality": {
+                "title": "Menyaksikan Buah dari Doa dan Ikhtiar yang Sabar",
+                "summary": "Melihat bukti nyata bahwa doa yang dipanjatkan dengan ikhlas tidak pernah sia-sia.",
+                "meaning": "Secara spiritual, Three of Wands adalah fajar pembuktian janji Tuhan. Doa-doa dan amal kebaikan yang kamu kirimkan ke samudra batin di masa lalu kini berlabuh membawa ketenangan dan keberkahan nyata dalam hidupmu. Rasa syukurmu meluap dengan tulus.",
+                "advice": "Tingkatkan rasa syukurmu dalam sujud; percayalah bahwa setiap kebaikan akan kembali kepada pelakunya pada waktu terbaik.",
+                "reflectionQuestion": "Bagaimana kamu mengungkapkan rasa syukurmu kepada Tuhan atas pintu-pintu kemudahan yang terbuka?",
+                "keywords": ["Buah Doa", "Janji Terbukti", "Syukur Meluap", "Berkah Ikhtiar"]
+            }
+        }
+    },
+    {
+        "id": "four-of-wands",
+        "name": "Four of Wands",
+        "slug": "four-of-wands",
+        "image": "/assets/tarot/cards/Four of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "4",
+        "uprightKeywords": ["Perayaan", "Harmoni Rumah Tangga", "Kedamaian Komunitas", "Milestone Sukses", "Rasa Syukur"],
+        "reversedKeywords": ["Ketegangan Keluarga Sementara", "Penundaan Pesta", "Rasa Terasing", "Kurang Apresiasi"],
+        "description": "Dua orang wanita bermahkota bunga melambaikan karangan bunga di depan gapura kanopi empat tongkat kayu yang dihias anyaman bunga, buah anggur, dan pita. Di latar belakang tampak benteng kota yang megah. Four of Wands melambangkan perayaan keberhasilan, keharmonisan rumah tangga, kepulangan yang damai, dan fondasi komunitas yang kokoh.",
+        "readings": {
+            "love": {
+                "title": "Perayaan Cinta, Pernikahan, dan Rumah Tangga Bahagia",
+                "summary": "Pencapaian milestone indah dalam asmara: lamaran, pernikahan, atau keharmonisan rumah baru.",
+                "meaning": "Four of Wands adalah salah satu kartu asmara paling membahagiakan. Hubunganmu memasuki fase stabilitas yang manis di mana restu keluarga dan dukungan komunitas mengalir penuh. Pasangan merasakan rasa aman seperti berada di 'rumah hati' yang sesungguhnya.",
+                "advice": "Rayakan kebersamaanmu; ciptakan momen berkumpul yang hangat bersama pasangan dan keluarga besar.",
+                "reflectionQuestion": "Bagaimana kamu bisa membuat pasanganmu merasa benar-benar aman, nyaman, dan 'pulang' saat bersamamu?",
+                "keywords": ["Pernikahan Bahagia", "Rumah Tangga Harmonis", "Restu Keluarga", "Milestone Cinta"]
+            },
+            "work": {
+                "title": "Pencapaian Milestone Tim dan Selebrasi Bersama",
+                "summary": "Menuntaskan fase proyek penting dengan sukses dan merayakannya bersama rekan kerja.",
+                "meaning": "Di lingkungan kerja, Four of Wands menandakan keberhasilan tim mencapai target krusial (milestone). Atmosfer kantor sangat menyenangkan, penuh tawa, dan rasa kebersamaan yang solid. Rekan kerja merasa dihargai dan termotivasi.",
+                "advice": "Adakan acara apresiasi atau makan bersama tim; perkuat rasa persaudaraan sebelum memulai fase proyek berikutnya.",
+                "reflectionQuestion": "Prestasi tim apa yang patut kamu apresiasi dan rayakan bersama rekan-rekan kerjamu?",
+                "keywords": ["Milestone Proyek", "Apresiasi Tim", "Kebersamaan Solid", "Selebrasi Kerja"]
+            },
+            "career": {
+                "title": "Stabilitas Profesional dan Fondasi Reputasi yang Kokoh",
+                "summary": "Mencapai posisi kerja yang nyaman, aman, dan dihormati oleh rekan sejawat.",
+                "meaning": "Karier di bawah naungan Four of Wands memberikan rasa aman dan kemapanan. Kamu telah berhasil membangun fondasi profesional yang kokoh dan mendapatkan tempat terhormat di bidangmu. Ini saat yang tepat untuk menikmati hasil kerja kerasmu.",
+                "advice": "Nikmati stabilitas yang telah kamu bangun; gunakan rasa aman ini untuk merencanakan langkah jangka panjang.",
+                "reflectionQuestion": "Bagaimana caramu menjaga keharmonisan dan budaya kerja positif di tempat kerjamu?",
+                "keywords": ["Kemapanan Karier", "Fondasi Kokoh", "Rasa Aman", "Budaya Harmonis"]
+            },
+            "finance": {
+                "title": "Keamanan Finansial untuk Rumah dan Keluarga",
+                "summary": "Kemampuan membeli properti, renovasi rumah, atau mencukupi kebutuhan keluarga dengan gembira.",
+                "meaning": "Secara keuangan, kartu ini melambangkan kemakmuran rumah tangga. Dana yang kamu miliki cukup untuk mewujudkan hunian impian, menyelenggarakan hajatan keluarga, atau sekadar menikmati liburan bersama tanpa beban kecemasan materi.",
+                "advice": "Alokasikan sebagian rezeki untuk memperindah rumah dan membahagiakan keluarga terdekatmu.",
+                "reflectionQuestion": "Investasi keluarga apa (rumah, pendidikan anak, atau kenyamanan hunian) yang siap kamu wujudkan?",
+                "keywords": ["Hunian Nyaman", "Keamanan Finansial", "Hajatan Keluarga", "Kebahagiaan Rumah"]
+            },
+            "selfGrowth": {
+                "title": "Kedamaian Batin: Merasa Nyaman di Rumah Jiwa Sendiri",
+                "summary": "Mencapai penerimaan diri yang utuh dan merasa aman di dalam tubuh serta pikiranmu.",
+                "meaning": "Pengembangan diri kartu Four of Wands adalah rasa pulang ke rumah jiwa (coming home to yourself). Kamu tidak lagi merasa perlu membuktikan apa pun kepada orang lain untuk merasa berharga. Kamu damai dengan siapa dirimu dan bersyukur atas segala proses yang telah membentukmu.",
+                "advice": "Ciptakan sudut santai di kamarmu yang membawa ketenangan; rawatlah tubuh dan jiwamu dengan rasa cinta.",
+                "reflectionQuestion": "Apakah kamu sudah merasa damai dan nyaman dengan dirimu sendiri apa adanya?",
+                "keywords": ["Pulang ke Rumah Jiwa", "Penerimaan Utuh", "Kedamaian Batin", "Rasa Syukur"]
+            },
+            "relationships": {
+                "title": "Kehangatan Silaturahmi dan Pertemuan Keluarga Besar",
+                "summary": "Momen reuni akrab yang dipenuhi tawa, jamuan lezat, dan penguatan tali persaudaraan.",
+                "meaning": "Dalam pergaulan dan keluarga, Four of Wands adalah simbol pesta reuni keluarga atau arisan sahabat yang meriah. Hubungan antarkerabat harmonis, penuh kehangatan, dan saling mendukung dalam suka maupun duka.",
+                "advice": "Jadilah perekat kebersamaan keluarga; sambut kehadiran kerabat dengan tangan terbuka dan senyuman tulus.",
+                "reflectionQuestion": "Bagaimana caramu mempererat keharmonisan dan rasa saling peduli di antara sanak saudaramu?",
+                "keywords": ["Reuni Keluarga", "Kehangatan Rumah", "Silaturahmi Guyub", "Persaudaraan Erat"]
+            },
+            "spirituality": {
+                "title": "Bait Suci di Dalam Kalbu dan Syukur Mendalam",
+                "summary": "Menyadari bahwa hati yang damai adalah rumah ibadah paling sakral bagi Tuhan.",
+                "meaning": "Secara spiritual, empat tongkat kanopi melambangkan fondasi keimanan yang kokoh. Dalam ketenangan batin, kamu merasakan hadirat Tuhan yang menaungi keluargamu dengan keselamatan dan keberkahan. Syukur atas rasa aman adalah puncak ibadahmu saat ini.",
+                "advice": "Jadikan rumahmu sebagai tempat yang senantiasa dihidupkan dengan doa, kebaikan, dan bacaan kitab suci.",
+                "reflectionQuestion": "Bagaimana caramu menghadirkan suasana sakinah, mawaddah, dan rahmah di dalam rumah tanggamu?",
+                "keywords": ["Rumah Sakinah", "Bait Suci Kalbu", "Naungan Rahmat", "Fondasi Iman"]
+            }
+        }
+    },
+    {
+        "id": "five-of-wands",
+        "name": "Five of Wands",
+        "slug": "five-of-wands",
+        "image": "/assets/tarot/cards/Five of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "5",
+        "uprightKeywords": ["Persaingan", "Perbedaan Pendapat", "Gesekan Ide", "Kompetisi Sehat", "Tantangan Dinamis"],
+        "reversedKeywords": ["Menghindari Konflik", "Kompromi Terpaksa", "Kelelahan Bersaing", "Kerusuhan Batin"],
+        "description": "Lima orang pemuda berpakaian berbeda saling mengacungkan tongkat kayu mereka ke udara dalam simulasi pertempuran atau kompetisi fisik. Five of Wands melambangkan gesekan ide, persaingan sehat, perdebatan dinamis, dan tantangan menguji ketangkasan mental dalam kelompok.",
+        "readings": {
+            "love": {
+                "title": "Perdebatan Kecil dan Menemukan Kesepahaman",
+                "summary": "Menyikapi perbedaan pendapat dalam hubungan dengan kedewasaan tanpa gengsi.",
+                "meaning": "Five of Wands dalam percintaan menandakan adanya adu argumen atau gesekan ego kecil antara kamu dan pasangan. Perselisihan ini biasanya bukan tentang masalah besar, melainkan benturan kebiasaan sehari-hari atau persaingan siapa yang paling dominan dalam mengambil keputusan.",
+                "advice": "Dengarkan pasangan tanpa buru-buru menyela; jangan jadikan perbedaan pendapat sebagai ajang menang-kalahan.",
+                "reflectionQuestion": "Apakah kamu lebih mementingkan memenangkan perdebatan atau menjaga kehangatan hubungan bersama pasangan?",
+                "keywords": ["Adu Argumen", "Gesekan Ego", "Komunikasi Sehat", "Hindari Menang-Kalahan"]
+            },
+            "work": {
+                "title": "Brainstorming yang Alot dan Kompetisi Internal",
+                "summary": "Perdebatan sengit tentang ide proyek yang dapat menghasilkan inovasi terbaik jika diarahkan dengan benar.",
+                "meaning": "Di tempat kerja, Five of Wands mencerminkan suasana diskusi yang panas di mana setiap orang berusaha mempertahankan gagasannya. Persaingan ini wajar dan dapat menjadi pemicu lahirnya solusi brilian asalkan tetap menjaga profesionalisme dan saling menghormati.",
+                "advice": "Fokuskan perdebatan pada substansi masalah, bukan menyerang pribadi rekan kerja; cari titik temu terbaik.",
+                "reflectionQuestion": "Bagaimana caramu mengarahkan energi persaingan tim menjadi kolaborasi yang produktif?",
+                "keywords": ["Brainstorming Alot", "Kompetisi Sehat", "Gesekan Ide", "Profesionalisme"]
+            },
+            "career": {
+                "title": "Menghadapi Persaingan Pasar dan Uji Ketangguhan",
+                "summary": "Mengasah keunggulan kompetitif di tengah pasar yang padat dan dinamis.",
+                "meaning": "Karier di bawah pengaruh kartu ini menuntutmu untuk meningkatkan keterampilan agar mampu bersaing dengan profesional lain. Pasar kerja atau persaingan bisnis sedang ketat, namun hal ini justru mengasah ketangkasan dan mental juangmu menuju level keahlian yang lebih tinggi.",
+                "advice": "Tunjukkan keunikan dan nilai tambah yang kamu miliki; jadikan persaingan sebagai pemicu untuk terus berinovasi.",
+                "reflectionQuestion": "Keunggulan kompetitif apa yang membedakan kualitas karyamu dari rekan-rekan seprofesimu?",
+                "keywords": ["Keunggulan Bersaing", "Mental Juang", "Pasar Ketat", "Inovasi Unik"]
+            },
+            "finance": {
+                "title": "Pertarungan Penawaran dan Pengendalian Anggaran",
+                "summary": "Waspada terhadap perang harga atau tawaran lelang yang memicu keputusan impulsif.",
+                "meaning": "Secara finansial, Five of Wands memperingatkan agar tidak terjebak dalam perang penawaran atau persaingan gengsi materi dengan orang lain. Pengeluaranmu bisa membengkak jika kamu terus membandingkan apa yang kamu miliki dengan standar konsumsi orang lain.",
+                "advice": "Tetap berpegang teguh pada anggaran pribadimu; jangan keluarkan uang hanya demi membuktikan gengsi kepada orang lain.",
+                "reflectionQuestion": "Apakah keputusan belanjamu belakangan ini dipengaruhi oleh keinginan bersaing dengan orang lain?",
+                "keywords": ["Hindari Gengsi", "Disiplin Anggaran", "Perang Penawaran", "Fokus Pribadi"]
+            },
+            "selfGrowth": {
+                "title": "Menjinakkan Pergolakan Batin dan Keraguan Pikiran",
+                "summary": "Mengatur pikiran-pikiran yang saling bertentangan agar menemukan arah yang jelas.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang mengatasi konflik internal di kepalamu. Terlalu banyak ide atau keraguan yang saling berbenturan dapat membuatmu merasa bingung dan lelah. Kamu perlu menenangkan riuh pikiranmu agar prioritas hidupmu kembali terlihat jernih.",
+                "advice": "Tuliskan seluruh isi pikiranmu di atas kertas; urutkan berdasarkan prioritas dan abaikan kekhawatiran yang tidak perlu.",
+                "reflectionQuestion": "Pertentangan batin apa yang saat ini paling banyak menguras energimu?",
+                "keywords": ["Konflik Batin", "Pikiran Riuh", "Menentukan Prioritas", "Ketenangan Mental"]
+            },
+            "relationships": {
+                "title": "Menyelesaikan Friksi dan Dinamika Kelompok",
+                "summary": "Meredakan ketegangan antarteman atau keluarga melalui musyawarah terbuka.",
+                "meaning": "Dalam pergaulan dan keluarga, ada perbedaan pendapat mengenai rencana bersama atau pembagian peran. Suasana bisa terasa sedikit riuh, namun percakapan yang jujur dan santun akan mencairkan suasana dan membawa pemahaman baru.",
+                "advice": "Jadilah penengah yang netral; ajak semua pihak berbicara bergantian dan dengarkan keluhan dengan kepala dingin.",
+                "reflectionQuestion": "Bagaimana kamu bisa membantu menenangkan perdebatan antarteman tanpa memperkeruh suasana?",
+                "keywords": ["Musyawarah Terbuka", "Penengah Netral", "Meredakan Friksi", "Kepala Dingin"]
+            },
+            "spirituality": {
+                "title": "Jihad Akbar: Perang Melawan Hawa Nafsu Sendiri",
+                "summary": "Menyadari bahwa medan pertempuran paling agung adalah pergulatan batin di dalam dada.",
+                "meaning": "Secara spiritual, Five of Wands melambangkan pergulatan spiritual melawan bisikan ego, kemalasan ibadah, dan amarah batin. Setiap kali kamu berhasil menahan amarah dan memilih kesabaran, kamu telah memenangkan pertempuran jiwa yang paling mulia di hadapan Tuhan.",
+                "advice": "Gunakan zikir dan doa sebagai perisai batin saat emosi bergejolak; tundukkan ego di hadapan kerendahan hati.",
+                "reflectionQuestion": "Nafsu atau dorongan ego apa yang hari ini paling berhasil kamu kendalikan dengan kesabaran?",
+                "keywords": ["Perang Hawa Nafsu", "Pengendalian Diri", "Perisai Doa", "Kemenangan Jiwa"]
+            }
+        }
+    },
+    {
+        "id": "six-of-wands",
+        "name": "Six of Wands",
+        "slug": "six-of-wands",
+        "image": "/assets/tarot/cards/Six of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "6",
+        "uprightKeywords": ["Kemenangan", "Pengakuan Publik", "Kebanggaan", "Kemajuan Cemerlang", "Keberhasilan Bersama"],
+        "reversedKeywords": ["Kejatuhan Reputasi", "Sombong Berlebih", "Gagal Diakui", "Kemenangan Semu"],
+        "description": "Seorang ksatria menunggang kuda putih berhias jubah hijau dan mahkota daun salam di kepalanya, memegang tongkat berhias karangan bunga kemenangan. Orang-orang di sekitarnya bersorak menyambut kepulangannya. Six of Wands melambangkan kemenangan gemilang, pengakuan publik atas kerja keras, dan kebanggaan yang terwujud nyata.",
+        "readings": {
+            "love": {
+                "title": "Cinta yang Membanggakan dan Diakui Semua Pihak",
+                "summary": "Hubungan asmara yang penuh kebahagiaan, mendapatkan dukungan luas dan restu membanggakan.",
+                "meaning": "Six of Wands dalam percintaan menandakan keberhasilan melewati masa sulit bersama pasangan hingga kini cinta kalian diakui dan diapresiasi oleh keluarga dan lingkungan. Bagi yang lajang, daya tarik dan pesonamu sedang memancar kuat, menarik perhatian orang-orang yang mengagumimu.",
+                "advice": "Tunjukkan rasa banggamu terhadap pasangan di hadapan orang lain; jaga rasa saling menghargai agar kebahagiaan tetap abadi.",
+                "reflectionQuestion": "Prestasi atau kebaikan apa dari pasanganmu yang paling kamu banggakan hari ini?",
+                "keywords": ["Cinta Membanggakan", "Pengakuan Asmara", "Pesona Memikat", "Kemenangan Bersama"]
+            },
+            "work": {
+                "title": "Pujian Atasan dan Pengakuan Prestasi Kerja",
+                "summary": "Kerja kerasmu mendapatkan sorotan positif dan apresiasi resmi dari perusahaan.",
+                "meaning": "Di tempat kerja, Six of Wands adalah momen panggung kejayaanmu. Proyek yang kamu pimpin sukses besar dan mendapatkan pujian dari pimpinan atau klien. Kamu membuktikan bahwa ide dan eksekusimu mampu menghasilkan dampak positif yang terukur.",
+                "advice": "Terimalah pujian dengan rendah hati; jangan lupa mengapresiasi kontribusi seluruh anggota tim yang telah berjuang bersamamu.",
+                "reflectionQuestion": "Bagaimana kamu membagikan rasa bangga atas keberhasilan ini kepada seluruh tim kerjamu?",
+                "keywords": ["Pujian Resmi", "Sorotan Prestasi", "Panggung Kejayaan", "Apresiasi Tim"]
+            },
+            "career": {
+                "title": "Promosi Jabatan dan Pengakuan Reputasi Industri",
+                "summary": "Lompatan karier yang membanggakan, memenangkan penghargaan atau pengakuan publik.",
+                "meaning": "Karier di bawah pengaruh kartu ini menandakan pencapaian puncak dalam profesimu: terpilih sebagai karyawan teladan, memenangkan penghargaan industri, atau mendapatkan promosi yang sangat didambakan. Rekam jejakmu diakui sebagai standar keunggulan.",
+                "advice": "Jadikan pengakuan ini sebagai pemicu untuk memberikan kontribusi yang lebih besar; hindari sikap tinggi hati.",
+                "reflectionQuestion": "Tanggung jawab kepemimpinan apa yang siap kamu emban seiring meningkatnya posisimu?",
+                "keywords": ["Promosi Jabatan", "Penghargaan Industri", "Reputasi Cemerlang", "Standar Keunggulan"]
+            },
+            "finance": {
+                "title": "Bonus Prestasi dan Kemakmuran Hasil Jerih Payah",
+                "summary": "Mendapatkan insentif, komisi besar, atau dividen yang memuaskan.",
+                "meaning": "Secara finansial, Six of Wands membawa kabar gembira berupa bonus kerja, pembagian dividen yang menguntungkan, atau keberhasilan negosiasi kontrak bernilai tinggi. Keringat dan ketekunanmu kini berbuah manis dalam bentuk materi nyata.",
+                "advice": "Gunakan sebagian bonus untuk mengapresiasi diri dan keluarga secara wajar, lalu investasikan sisanya untuk masa depan.",
+                "reflectionQuestion": "Bagaimana kamu mengelola bonus keberhasilan finansial ini agar nilainya berlipat ganda?",
+                "keywords": ["Bonus Prestasi", "Hasil Keringat", "Insentif Tinggi", "Investasi Bijak"]
+            },
+            "selfGrowth": {
+                "title": "Kemenangan Atas Keraguan Diri Sendiri",
+                "summary": "Membuktikan kepada diri sendiri bahwa kamu mampu menaklukkan rintangan terberat.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang rasa percaya diri yang sehat. Kamu telah membuktikan bahwa suara-suara keraguan di kepalamu keliru. Mahkota daun salam melambangkan ketangguhan jiwamu yang berhasil melewati ujian hidup dan bangkit sebagai pemenang sejati.",
+                "advice": "Tepuk pundakmu sendiri dan akui kerja kerasmu; jadikan keberhasilan ini sebagai fondasi rasa percaya diri yang kokoh.",
+                "reflectionQuestion": "Rasa takut atau keraguan diri apa yang paling berhasil kamu kalahkan dalam perjalanan hidupmu?",
+                "keywords": ["Percaya Diri Sehat", "Menaklukkan Keraguan", "Mahkota Ketangguhan", "Pemenang Sejati"]
+            },
+            "relationships": {
+                "title": "Membanggakan Keluarga dan Mempererat Dukungan Sosial",
+                "summary": "Menjadi kebanggaan bagi orang tua dan sahabat yang senantiasa mendoakan langkahmu.",
+                "meaning": "Dalam pergaulan dan keluarga, keberhasilanmu membawa kebahagiaan dan kebanggaan bagi orang-orang tersayang. Momen ini mempererat ikatan kekeluargaan dan memperkuat rasa saling memiliki dalam komunitasmu.",
+                "advice": "Sampaikan terima kasih kepada orang-orang yang telah mendoakan dan mendukungmu di saat kamu merintis dari bawah.",
+                "reflectionQuestion": "Siapa sosok yang paling berjasa mendukung langkahmu hingga kamu bisa berada di posisi saat ini?",
+                "keywords": ["Kebanggaan Keluarga", "Dukungan Tulus", "Rasa Terima Kasih", "Ikatan Erat"]
+            },
+            "spirituality": {
+                "title": "Kemenangan Cahaya Batin di Bawah Lindungan Ilahi",
+                "summary": "Menyadari bahwa segala kemuliaan dan keberhasilan lahiriah adalah anugerah Tuhan semata.",
+                "meaning": "Secara spiritual, Six of Wands mengingatkan bahwa hakikat kemenangan sejati adalah kerendahan hati. Mahkota yang terpasang di kepalamu adalah titipan amanah dari Tuhan. Semakin tinggi kedudukanmu, semakin dalam sujud syukurmu di hadapan-Nya.",
+                "advice": "Ucapkan 'Alhamdulillah' atau pujian syukur dari lubuk hatimu yang terdalam; jagalah hatimu dari racun kesombongan.",
+                "reflectionQuestion": "Bagaimana caramu menjaga hati tetap rendah hati saat pujian duniawi berdatangan kepadamu?",
+                "keywords": ["Amanah Ilahi", "Kerendahan Hati", "Sujud Syukur", "Kemenangan Cahaya"]
+            }
+        }
+    },
+    {
+        "id": "seven-of-wands",
+        "name": "Seven of Wands",
+        "slug": "seven-of-wands",
+        "image": "/assets/tarot/cards/Seven of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "7",
+        "uprightKeywords": ["Mempertahankan Prinsip", "Keberanian Berdiri", "Menghadapi Tekanan", "Posisi Unggul", "Keteguhan Sikap"],
+        "reversedKeywords": ["Kelelahan Bertahan", "Menyerah pada Tekanan", "Kewalahan", "Ragu Membela Diri"],
+        "description": "Seorang pria berdiri di puncak bukit mempertahankan posisinya dengan tongkat kayu, menangkis enam tongkat lawan yang teracung dari jurang di bawahnya. Kakinya memakai dua sepatu berbeda, menunjukkan situasi darurat di mana ia harus bertindak cepat. Seven of Wands melambangkan keberanian mempertahankan prinsip, integritas di bawah tekanan, dan keteguhan hati mempertahankan apa yang telah diraih.",
+        "readings": {
+            "love": {
+                "title": "Memperjuangkan Hubungan di Tengah Penolakan Luar",
+                "summary": "Keteguhan hati melindungi cinta dari campur tangan pihak ketiga atau kritik lingkungan.",
+                "meaning": "Seven of Wands dalam percintaan menandakan bahwa hubunganmu sedang diuji oleh tekanan eksternal: kritik keluarga, cibiran orang lain, atau godaan pihak ketiga. Kamu dan pasangan harus berdiri kokoh bahu-membahu membela komitmen dan kepercayaan yang telah kalian sepakati.",
+                "advice": "Jangan biarkan komentar luar merusak keharmonisan kalian; tegaskan batasan privasi hubunganmu dari campur tangan orang lain.",
+                "reflectionQuestion": "Batasan apa yang perlu kamu dan pasangan tegakkan untuk melindungi keutuhan hubungan kalian?",
+                "keywords": ["Membela Komitmen", "Tegakkan Batasan", "Kompak Hadapi Ujian", "Keteguhan Asmara"]
+            },
+            "work": {
+                "title": "Mempertahankan Ide dan Integritas di Depan Kritik",
+                "summary": "Percaya diri mempertahankan hasil analisis dan usulan kerjamu di hadapan bantahan rekan.",
+                "meaning": "Di lingkungan kerja, idemu sedang ditantang atau kamu harus mempertahankan keputusan proyek di hadapan para pemangku kepentingan. Posisi analisismu sebenarnya sudah kuat; kamu hanya perlu menyajikan data secara tegas, lugas, dan tenang tanpa terpancing emosi.",
+                "advice": "Gunakan fakta dan data konkret untuk menangkis keraguan; pertahankan standar etika kerjamu tanpa kompromi.",
+                "reflectionQuestion": "Argumen atau data apa yang paling efektif untuk membuktikan kebenaran usulan kerjamu?",
+                "keywords": ["Pertahankan Ide", "Data Konkret", "Percaya Diri", "Keteguhan Profesional"]
+            },
+            "career": {
+                "title": "Mempertahankan Posisi Puncak dari Persaingan Ketat",
+                "summary": "Menghadapi tantangan kompetitor dengan inovasi dan ketahanan mental baja.",
+                "meaning": "Karier di bawah pengaruh kartu ini menandakan bahwa keberhasilanmu mengundang kompetisi dari pihak lain yang ingin merebut posisimu. Berada di atas memang menuntut kewaspadaan lebih tinggi, namun posisimu saat ini memiliki keunggulan strategis yang sulit ditandingi.",
+                "advice": "Teruslah meningkatkan mutu karyamu; pertahankan posisimu dengan tetap berinovasi dan melayani klien lebih prima.",
+                "reflectionQuestion": "Langkah inovatif apa yang dapat membuat posisimu tetap unggul tak tergoyahkan?",
+                "keywords": ["Posisi Unggul", "Kewaspadaan Karier", "Ketahanan Baja", "Inovasi Tak Tertandingi"]
+            },
+            "finance": {
+                "title": "Melindungi Aset dari Pengeluaran yang Memaksa",
+                "summary": "Ketegasan menolak permintaan pinjaman berisiko atau godaan pengeluaran tak perlu.",
+                "meaning": "Secara finansial, Seven of Wands menuntutmu untuk berani berkata 'tidak' terhadap permintaan uang yang merugikanmu, baik dari kerabat yang kurang bertanggung jawab atau tawaran investasi mencurigakan. Pertahankan dana tabunganmu demi keamanan masa depan.",
+                "advice": "Katakan tidak dengan sopan namun tegas; prioritaskan perlindungan aset dan stabilitas keluargamu sendiri.",
+                "reflectionQuestion": "Permintaan finansial apa yang selama ini sulit kamu tolak padahal jelas membebani anggaranmu?",
+                "keywords": ["Berani Berkata Tidak", "Lindungi Aset", "Pertahankan Tabungan", "Ketegasan Materi"]
+            },
+            "selfGrowth": {
+                "title": "Berani Berbeda dan Memegang Prinsip Autentik",
+                "summary": "Tidak goyah oleh tekanan mayoritas demi mempertahankan kebenaran nuranimu.",
+                "meaning": "Pengembangan diri kartu ini adalah keberanian memiliki integritas. Lebih baik berdiri sendirian mempertahankan prinsip kebenaran daripada bergabung dengan kerumunan yang melakukan kekeliruan. Keteguhanmu mempertahankan nilai-nilai luhur akan membentuk karakter yang sangat dihormati.",
+                "advice": "Pegang teguh kompas moralmu; jangan mengkhianati kata hatimu hanya demi diterima oleh kelompok tertentu.",
+                "reflectionQuestion": "Prinsip hidup apa yang siap kamu pertahankan meski orang-orang di sekitarmu tidak sepakat?",
+                "keywords": ["Integritas Diri", "Berani Berbeda", "Kompas Moral", "Karakter Kokoh"]
+            },
+            "relationships": {
+                "title": "Menjaga Batasan Sehat dari Tekanan Sosial",
+                "summary": "Menolak campur tangan berlebihan dalam urusan pribadimu dengan santun.",
+                "meaning": "Dalam pergaulan dan keluarga, kamu mungkin merasa lelah karena orang lain terlalu banyak mengatur hidupmu. Inilah saatnya menegakkan batasan personal yang sehat: bersikap sopan kepada mereka, namun tetap tegas menentukan jalan hidupmu sendiri.",
+                "advice": "Sampaikan batasanmu dengan kalimat yang jelas tanpa menyerang; tegaskan hakmu untuk mengambil keputusan pribadi.",
+                "reflectionQuestion": "Bagaimana caramu menyampaikan batasan diri kepada keluarga tanpa menimbulkan sakit hati?",
+                "keywords": ["Batasan Personal", "Hak Mandiri", "Komunikasi Santun", "Ketegasan Sikap"]
+            },
+            "spirituality": {
+                "title": "Keteguhan Iman di Tengah Badai Godaan Dunia",
+                "summary": "Mempertahankan kesucian ibadah dan prinsip moral di tengah lingkungan yang permisif.",
+                "meaning": "Secara spiritual, Seven of Wands adalah keteguhan iman (istiqomah). Berdiri di bukit keimanan menuntut ketahanan batin saat diuji oleh godaan materi dan bisikan keraguan. Bimbingan Tuhan menyertai mereka yang teguh memegang tali kebenaran.",
+                "advice": "Kuatkan doamu di sepertiga malam terakhir; mohonkan keteguhan hati kepada Sang Pembolak-balik Hati.",
+                "reflectionQuestion": "Bagaimana caramu menjaga keistiqomahan ibadahmu di tengah kesibukan dan godaan duniawi?",
+                "keywords": ["Istiqomah", "Keteguhan Iman", "Menjaga Kesucian", "Perlindungan Ilahi"]
+            }
+        }
+    },
+    {
+        "id": "eight-of-wands",
+        "name": "Eight of Wands",
+        "slug": "eight-of-wands",
+        "image": "/assets/tarot/cards/Eight of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "8",
+        "uprightKeywords": ["Kecepatan", "Kabar Cepat", "Perjalanan Udara", "Momentum Melesat", "Komunikasi Lancar"],
+        "reversedKeywords": ["Penundaan Komunikasi", "Informasi Tersendat", "Terburu-buru Ceroboh", "Frustrasi Menunggu"],
+        "description": "Delapan tongkat kayu melesat cepat melintasi udara terbuka di atas lembah hijau dan sungai yang mengalir tenang. Tidak ada sosok manusia di kartu ini, menunjukkan gerakan energi kosmis murni yang melaju tanpa hambatan. Eight of Wands melambangkan kecepatan, kabar baik yang tiba mendadak, momentum melesat, dan kelancaran komunikasi.",
+        "readings": {
+            "love": {
+                "title": "Perkembangan Asmara yang Melesat Cepat",
+                "summary": "Pesan cinta berbalas kilat, ketertarikan yang berkembang pesat, dan kencan dadakan.",
+                "meaning": "Eight of Wands membawa kecepatan luar biasa dalam ranah asmara. Pesan teks dibalas dengan antusias, janji temu terwujud tanpa hambatan, dan rasa saling suka mekar dalam hitungan hari. Bagi yang berpasangan, kartu ini menandakan resolusi kilat bagi masalah yang sempat tertunda.",
+                "advice": "Sambut arus asmara ini dengan gembira; ekspresikan perasaanmu tanpa menahan-nahan rasa suka.",
+                "reflectionQuestion": "Pesan cinta atau ajakan apa yang selama ini kamu tahan dan kini siap kamu kirimkan?",
+                "keywords": ["Perkembangan Kilat", "Pesan Berbalas", "Antusiasme Cinta", "Arus Lancar"]
+            },
+            "work": {
+                "title": "Akselerasi Proyek dan Komunikasi Kilat",
+                "summary": "Email penting berbalas cepat, persetujuan turun, dan tugas kerja selesai mendahului jadwal.",
+                "meaning": "Di tempat kerja, tempo aktivitas bergerak sangat cepat. Hambatan birokrasi mendadak runtuh dan persetujuan yang kamu nantikan segera tiba. Ini adalah fase produktivitas puncak di mana kamu menyelesaikan banyak hal dalam waktu singkat.",
+                "advice": "Jaga fokus dan responsif terhadap pesan penting; jangan biarkan momentum cepat ini terbuang percuma.",
+                "reflectionQuestion": "Tugas atau komunikasi tertunda apa yang bisa kamu selesaikan dalam waktu 30 menit ke depan?",
+                "keywords": ["Akselerasi Kerja", "Persetujuan Cepat", "Produktivitas Puncak", "Responsif"]
+            },
+            "career": {
+                "title": "Kabar Baik Karier dan Peluang Bepergian",
+                "summary": "Panggilan wawancara mendadak atau tawaran dinas luar kota yang mempercepat kemajuan profesi.",
+                "meaning": "Karier di bawah pengaruh Eight of Wands bergerak dengan kecepatan tinggi. Kabar baik mengenai lamaran pekerjaan, tender, atau promosi tiba lebih cepat dari perkiraanmu. Perjalanan dinas atau penugasan penting membawa reputasimu melesat.",
+                "advice": "Siapkan portofolio dan dokumenmu agar selalu siap dipresentasikan kapan saja dibutuhkan.",
+                "reflectionQuestion": "Bagaimana kesiapanmu menyambut perubahan dan penugasan baru yang datang secara mendadak?",
+                "keywords": ["Kabar Baik Cepat", "Perjalanan Dinas", "Momentum Karier", "Kesiapan Total"]
+            },
+            "finance": {
+                "title": "Pencairan Dana Cepat dan Transaksi Lancar",
+                "summary": "Pembayaran invoice cair mendadak dan transaksi keuangan berlangsung tanpa hambatan.",
+                "meaning": "Secara finansial, kartu ini melambangkan perputaran uang yang sangat cepat dan lancar. Tagihan yang sempat tertunggak segera dilunasi oleh klien, atau transfer dana investasi masuk tepat pada waktunya. Likuiditas keuanganmu sedang sangat prima.",
+                "advice": "Gunakan kelancaran arus kas ini untuk segera melunasi tagihan rutin agar tidak menumpuk di kemudian hari.",
+                "reflectionQuestion": "Transaksi atau pembayaran mana yang perlu segera kamu selesaikan mumpung arus kas sedang lancar?",
+                "keywords": ["Pencairan Cepat", "Transaksi Lancar", "Arus Kas Gesit", "Likuiditas Prima"]
+            },
+            "selfGrowth": {
+                "title": "Kejernihan Pikiran dan Tindakan Cekatan",
+                "summary": "Melepaskan keraguan batin dan bertindak tegas tanpa membuang-buang waktu.",
+                "meaning": "Pengembangan diri kartu Eight of Wands adalah kemampuan mengeksekusi niat baik secara instan. Ketika ilham atau dorongan kebaikan muncul di dalam hatimu, lakukan saat itu juga sebelum api antusiasmemu padam oleh logika ragu-ragu. Ketangkasan tindakan adalah kekuatanmu.",
+                "advice": "Terapkan aturan 'tiga detik': ketika berniat melakukan hal positif, segera ambil tindakan nyata tanpa menunda.",
+                "reflectionQuestion": "Keputusan baik apa yang selama ini kamu tunda-tunda dan siap kamu eksekusi hari ini?",
+                "keywords": ["Tindakan Cekatan", "Hindari Menunda", "Eksekusi Kilat", "Kejernihan Niat"]
+            },
+            "relationships": {
+                "title": "Kabar Gembira dari Sahabat dan Reuni Mendadak",
+                "summary": "Pertukaran kabar yang hangat di grup percakapan dan rencana temu kangen spontan.",
+                "meaning": "Dalam pergaulan dan keluarga, Eight of Wands menandakan komunikasi yang sangat dinamis. Undangan berkumpul mendadak, kabar gembira pertunangan atau kelahiran kerabat, dan lelucon yang saling berbalas membawa suasana gembira dalam lingkaranmu.",
+                "advice": "Balas pesan orang-orang tersayangmu dengan hangat; luangkan waktu untuk temu kangen spontan.",
+                "reflectionQuestion": "Siapa sahabat karib yang pesannya paling membawa senyuman di wajahmu hari ini?",
+                "keywords": ["Kabar Gembira", "Temu Spontan", "Komunikasi Hangat", "Dinamika Akrab"]
+            },
+            "spirituality": {
+                "title": "Doa yang Melesat Langsung ke Hadirat Ilahi",
+                "summary": "Merasakan keterbukaan pintu langit di mana doa dan permohonan terasa begitu dekat dikabulkan.",
+                "meaning": "Secara spiritual, delapan tongkat yang melesat melambangkan panah-panah doa yang meluncur langsung menembus langit menuju hadirat Sang Maha Pendengar. Ketiadaan rintangan lahiriah mencerminkan kemurnian hati yang membebaskan jalur komunikasi jiwamu dengan Tuhan.",
+                "advice": "Panjatkan doa-doa terbaikmu saat ini; manfaatkan momen keterbukaan batin untuk memohon kebaikan hidup dan akhirat.",
+                "reflectionQuestion": "Doa terdalam apa yang paling ingin kamu panjatkan ke hadirat Tuhan di waktu mustajab ini?",
+                "keywords": ["Panah Doa", "Pintu Langit Terbuka", "Waktu Mustajab", "Koneksi Cepat"]
+            }
+        }
+    },
+    {
+        "id": "nine-of-wands",
+        "name": "Nine of Wands",
+        "slug": "nine-of-wands",
+        "image": "/assets/tarot/cards/Nine of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "9",
+        "uprightKeywords": ["Ketahanan Mental", "Ujian Terakhir", "Stamina Baja", "Kewaspadaan Bijak", "Pantang Menyerah"],
+        "reversedKeywords": ["Kelelahan Ekstrem", "Paranoia Berlebih", "Menyerah di Garis Akhir", "Kehabisan Tenaga"],
+        "description": "Seorang pria dengan perban di kepalanya berdiri memegang satu tongkat kayu dengan ekspresi waspada, sementara delapan tongkat lainnya tertancap rapi di belakangnya membentuk pagar pertahanan. Nine of Wands melambangkan ketahanan di putaran terakhir, ketabahan melewati rasa lelah, dan keberanian bertahan sedikit lagi demi meraih kemenangan.",
+        "readings": {
+            "love": {
+                "title": "Melindungi Hati Sembari Memulihkan Kepercayaan",
+                "summary": "Belajar membedakan antara kehati-hatian yang sehat dengan rasa curiga akibat trauma lama.",
+                "meaning": "Nine of Wands dalam percintaan menandakan bahwa luka masa lalu membuatmu bersikap sangat waspada dalam membuka hati. Kehati-hatian itu wajar untuk melindungi dirimu, namun jangan sampai pagar pertahananmu terlalu tinggi hingga cinta yang tulus tidak dapat masuk.",
+                "advice": "Beri waktu bagi dirimu untuk sembuh; bukalah pintu hatimu secara bertahap kepada orang yang telah terbukti setia.",
+                "reflectionQuestion": "Pagar pertahanan apa yang kamu bangun di sekitar hatimu yang sebenarnya sudah boleh mulai kamu turunkan?",
+                "keywords": ["Waspada Sehat", "Luka Masa Lalu", "Ketahanan Hati", "Membuka Bertahap"]
+            },
+            "work": {
+                "title": "Menuntaskan Putaran Terakhir Proyek Kerja",
+                "summary": "Tetap fokus dan berstamina tinggi di tengah rasa lelah menjelang batas akhir penyelesaian.",
+                "meaning": "Di lingkungan kerja, kamu berada di garis akhir proyek yang sangat melelahkan. Tekanan memang tinggi dan energimu terkuras, namun hasil akhir sudah berada di depan mata. Sedikit dorongan ketekunan lagi akan membawa proyek ini tuntas dengan sempurna.",
+                "advice": "Tarik napas dalam-dalam dan atur energimu; jangan biarkan keletihan membuatmu ceroboh di saat-saat terakhir.",
+                "reflectionQuestion": "Langkah kecil apa yang perlu kamu tuntaskan hari ini untuk mendekatkan proyekmu ke garis akhir?",
+                "keywords": ["Putaran Terakhir", "Garis Akhir", "Stamina Kerja", "Pantang Menyerah"]
+            },
+            "career": {
+                "title": "Ujian Integritas Menjelang Puncak Keberhasilan",
+                "summary": "Menolak menyerah di hadapan rintangan terakhir sebelum meraih lompatan karier.",
+                "meaning": "Karier di bawah pengaruh kartu ini menguji ketahanan mentalmu. Kamu mungkin merasa lelah oleh birokrasi, persaingan, atau beban tanggung jawab, namun jangan sekali-kali menyerah saat ini. Kemenangan terbesar sering kali diraih tepat setelah masa-masa paling melelahkan.",
+                "advice": "Pertahankan posisi dan integritasmu; kamu jauh lebih kuat dan tangguh daripada yang kamu bayangkan.",
+                "reflectionQuestion": "Apa yang menjadi sumber motivasi utamamu untuk tetap bertahan saat segalanya terasa berat?",
+                "keywords": ["Ujian Ketahanan", "Mental Baja", "Tinggal Sedikit Lagi", "Integritas Karier"]
+            },
+            "finance": {
+                "title": "Menjaga Benteng Tabungan dari Pengeluaran Tak Perlu",
+                "summary": "Disiplin mempertahankan dana darurat dan menolak pengeluaran konsumtif di saat genting.",
+                "meaning": "Secara finansial, Nine of Wands meminta kewaspadaan ketat terhadap kebocoran dana. Kamu mungkin merasa tergoda untuk melonggarkan anggaran, namun situasi saat ini menuntutmu untuk tetap menjaga benteng pertahanan finansialmu agar tidak goyah oleh kebutuhan darurat.",
+                "advice": "Kencangkan ikat pinggang sedikit lagi; pastikan dana cadanganmu aman sebelum memikirkan pengeluaran rekreasi.",
+                "reflectionQuestion": "Pengeluaran apa yang harus kamu tolak dengan tegas demi menjaga benteng keamanan finansialmu?",
+                "keywords": ["Benteng Tabungan", "Waspada Kebocoran", "Disiplin Ketat", "Dana Cadangan"]
+            },
+            "selfGrowth": {
+                "title": "Kekuatan Sejati di Balik Bekas Luka Kehidupan",
+                "summary": "Menyadari bahwa setiap luka dan ujian hidup telah menempamu menjadi pribadi yang tangguh.",
+                "meaning": "Pengembangan diri kartu Nine of Wands adalah penghormatan atas ketangguhan jiwamu. Perban di kepalamu adalah tanda bukti pertempuran batin yang telah berhasil kamu lalui. Kamu belum patah; kamu masih berdiri tegak dengan kepala tegak. Kamu adalah seorang penyintas yang perkasa.",
+                "advice": "Istirahatlah sejenak jika kamu lelah, namun jangan berhenti; berbanggalah atas ketangguhan yang ada di dalam dirimu.",
+                "reflectionQuestion": "Ujian terberat apa yang telah berhasil kamu lewati yang membuktikan betapa tangguhnya jiwamu?",
+                "keywords": ["Penyintas Tangguh", "Bekas Luka Berharga", "Stamina Batin", "Bangkit Berdiri"]
+            },
+            "relationships": {
+                "title": "Menjaga Kepercayaan di Tengah Rasa Lelah Sosial",
+                "summary": "Mengambil waktu untuk memulihkan energi pribadi tanpa menjauhkan diri dari sahabat sejati.",
+                "meaning": "Dalam pergaulan dan keluarga, kamu mungkin merasa lelah karena sering menjadi tumpuan masalah orang lain. Wajar jika kamu ingin beristirahat sejenak di balik benteng privasimu. Jelaskan kepada orang-orang terdekat bahwa kamu sedang membutuhkan waktu untuk mengisi ulang baterai jiwamu.",
+                "advice": "Sampaikan kebutuhan istirahatmu dengan jujur; jangan memaksakan diri hadir jika energimu sedang benar-benar habis.",
+                "reflectionQuestion": "Bagaimana caramu mengisi ulang energimu tanpa membuat orang-orang tersayang merasa diabaikan?",
+                "keywords": ["Isi Ulang Energi", "Waktu Privasi", "Jujur Soal Lelah", "Menjaga Hubungan"]
+            },
+            "spirituality": {
+                "title": "Kesabaran Tingkat Tinggi di Ambang Datangnya Pertolongan",
+                "summary": "Menyadari bahwa pertolongan Tuhan sering kali tiba tepat di saat hamba-Nya hampir kehabisan daya.",
+                "meaning": "Secara spiritual, Nine of Wands adalah ujian kesabaran puncak. Dalam tradisi spiritual, gelap malam terasa paling pekat sesaat sebelum fajar menyingsing. Tetaplah berpegang teguh pada tali pengharapan kepada Tuhan; pertolongan-Nya amat dekat bagi mereka yang sabar.",
+                "advice": "Lanjutkan zikir dan doamu meski terasa berat; kuatkan hatimu bahwa pertolongan ilahi sedang dalam perjalanan.",
+                "reflectionQuestion": "Bagaimana kamu menjaga keyakinan bahwa setiap kesulitan pasti disertai dengan kemudahan dari Tuhan?",
+                "keywords": ["Pertolongan Dekat", "Sabar Puncak", "Fajar Menanti", "Tali Pengharapan"]
+            }
+        }
+    },
+    {
+        "id": "ten-of-wands",
+        "name": "Ten of Wands",
+        "slug": "ten-of-wands",
+        "image": "/assets/tarot/cards/Ten of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "10",
+        "uprightKeywords": ["Beban Berlebih", "Tanggung Jawab Berat", "Kelelahan Fisik", "Perlu Delegasi", "Mendekati Tujuan"],
+        "reversedKeywords": ["Melepaskan Beban", "Menolak Dieksploitasi", "Kelelahan Total", "Belajar Mendelegasikan"],
+        "description": "Seorang pria membungkuk memikul beban berat sepuluh tongkat kayu besar di tangannya, melangkah tertatih-tatih menuju kota bertembok di kejauhan. Ten of Wands melambangkan beban kerja berlebih, tanggung jawab yang membebani pundak, namun juga kepastian bahwa tujuan akhir sudah sangat dekat.",
+        "readings": {
+            "love": {
+                "title": "Memikul Beban Hubungan Sendirian",
+                "summary": "Kelelahan emosional akibat merasa hanya satu pihak yang berusaha mempertahankan hubungan.",
+                "meaning": "Ten of Wands dalam percintaan adalah peringatan bahwa kamu mungkin memikul terlalu banyak tanggung jawab emosional atau domestik sendirian. Hubungan cinta adalah kemitraan dua arah; kamu tidak seharusnya menjadi satu-satunya yang berkorban dan mengalah terus-menerus.",
+                "advice": "Bicarakan pembagian tanggung jawab secara jujur dengan pasangan; mintalah bantuannya untuk memikul beban bersama.",
+                "reflectionQuestion": "Beban apa dalam hubunganmu yang saat ini paling membuatmu merasa kelelahan sendirian?",
+                "keywords": ["Beban Asmara", "Kemitraan Setara", "Berbagi Tanggung Jawab", "Komunikasi Jujur"]
+            },
+            "work": {
+                "title": "Kelebihan Beban Kerja dan Kebutuhan Delegasi",
+                "summary": "Terlalu banyak mengambil tanggung jawab hingga mengorbankan kualitas kesehatan dan hasil kerja.",
+                "meaning": "Di tempat kerja, kartu ini menyoroti bahaya burnout. Kamu mungkin sulit berkata 'tidak' sehingga seluruh pekerjaan dilimpahkan ke mejamu. Ingatlah bahwa bekerja keras tanpa delegasi yang tepat justru menurunkan efisiensi dan merugikan performamu.",
+                "advice": "Delegasikan tugas-tugas teknis kepada anggota tim; tentukan skala prioritas dan tolak penambahan beban baru.",
+                "reflectionQuestion": "Tugas kerja mana yang sebenarnya bisa kamu delegasikan kepada orang lain mulai hari ini?",
+                "keywords": ["Burnout Kerja", "Kebutuhan Delegasi", "Kelebihan Beban", "Skala Prioritas"]
+            },
+            "career": {
+                "title": "Harga Sebuah Kesuksesan dan Manajemen Tanggung Jawab",
+                "summary": "Menyadari bahwa semakin tinggi posisi, semakin krusial kemampuan memimpin melalui orang lain.",
+                "meaning": "Karier di bawah pengaruh Ten of Wands menandakan bahwa kamu telah mencapai volume pekerjaan yang masif. Namun untuk melangkah ke level eksekutif, kamu tidak bisa lagi menjadi pekerja tunggal (doer). Kamu harus bertransformasi menjadi pemimpin yang memberdayakan tim.",
+                "advice": "Lepaskan kebutuhan mengontrol setiap detail mikro; bangun sistem dan percayai kompetensi timmu.",
+                "reflectionQuestion": "Bagaimana caramu bertransformasi dari seseorang yang mengerjakan segalanya menjadi pemimpin yang membimbing?",
+                "keywords": ["Manajemen Beban", "Lepaskan Mikromanajemen", "Kepemimpinan Efektif", "Transformasi Peran"]
+            },
+            "finance": {
+                "title": "Beban Cicilan Finansial yang Menekan",
+                "summary": "Tekanan kewajiban materi yang menuntut restrukturisasi utang dan pengetatan gaya hidup.",
+                "meaning": "Secara finansial, Ten of Wands menggambarkan beban keuangan yang terasa berat di pundak: cicilan kredit, tanggungan keluarga besar, atau biaya hidup yang meningkat. Kabar baiknya, kota tujuan sudah terlihat di kejauhan: dengan disiplin, beban ini akan segera tuntas.",
+                "advice": "Susun strategi pelunasan utang yang terstruktur; jangan menambah beban finansial baru hingga tanggungan lama berkurang.",
+                "reflectionQuestion": "Kewajiban finansial mana yang jika dilunasi terlebih dahulu akan paling meringankan beban pikiranmu?",
+                "keywords": ["Beban Cicilan", "Restrukturisasi Utang", "Disiplin Finansial", "Menuju Kebebasan"]
+            },
+            "selfGrowth": {
+                "title": "Belajar Berkata 'Cukup' dan Menurunkan Tongkat Beban",
+                "summary": "Melepaskan kecenderungan menjadi people pleaser demi menjaga kesehatan mentalmu.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang menyembuhkan sindrom 'harus memikul segalanya sendiri'. Kamu tidak bertanggung jawab atas kebahagiaan seluruh dunia. Menurunkan tongkat-tongkat yang bukan milikmu adalah tindakan welas asih tertinggi bagi dirimu sendiri.",
+                "advice": "Pilihlah mana tanggung jawab yang benar-benar milikmu dan mana yang sebenarnya merupakan beban orang lain yang kamu pikul.",
+                "reflectionQuestion": "Beban atau ekspektasi siapa yang selama ini kamu pikul yang sebenarnya bukan kewajibanmu?",
+                "keywords": ["Lepaskan People Pleaser", "Batasan Diri", "Welas Asih Diri", "Menurunkan Beban"]
+            },
+            "relationships": {
+                "title": "Menolak Menjadi 'Pahlawan Tunggal' dalam Keluarga",
+                "summary": "Membuka dialog keluarga agar seluruh anggota ikut berkontribusi menyelesaikan masalah.",
+                "meaning": "Dalam keluarga dan persahabatan, kamu mungkin merasa selalu menjadi tempat pelarian ketika terjadi masalah. Orang lain terbiasa bergantung padamu karena kamu selalu bersedia membantu. Sudah saatnya mengajari mereka untuk mandiri dan memikul tanggung jawab bersama.",
+                "advice": "Ajak keluarga berembuk secara terbuka; bagi tugas dan peran agar tidak ada satu orang pun yang merasa dikorbankan.",
+                "reflectionQuestion": "Bagaimana caramu mendorong anggota keluarga lain untuk lebih mandiri dan bertanggung jawab?",
+                "keywords": ["Kemandirian Keluarga", "Berbagi Peran", "Rembuk Terbuka", "Hindari Ketergantungan"]
+            },
+            "spirituality": {
+                "title": "Menyerahkan Beban Hidup ke Haribaan Sang Maha Kuasa",
+                "summary": "Menyadari bahwa manusia tidak diciptakan untuk memikul beban semesta dengan tenaganya sendiri.",
+                "meaning": "Secara spiritual, Ten of Wands adalah panggilan untuk bertawakal total. Mengapa kamu memikul beban begitu berat dengan pundakmu yang rapuh ketika ada Tuhan Yang Maha Kuasa tempat kamu menyandarkan segala urusan? Berserahlah; serahkan bebanmu ke dalam pemeliharaan-Nya.",
+                "advice": "Dalam doamu, ucapkan dengan ikhlas: 'Wahai Tuhan, hamba serahkan urusan yang berat ini kepada-Mu, kuatkanlah pundak hamba.'",
+                "reflectionQuestion": "Beban hidup apa yang saat ini paling ingin kamu serahkan sepenuhnya ke dalam ketetapan Tuhan?",
+                "keywords": ["Tawakal Total", "Berserah Diri", "Penyandaran Hakiki", "Kelegaan Batin"]
+            }
+        }
+    },
+    {
+        "id": "page-of-wands",
+        "name": "Page of Wands",
+        "slug": "page-of-wands",
+        "image": "/assets/tarot/cards/Page of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "Page",
+        "uprightKeywords": ["Kabar Menyenangkan", "Rasa Ingin Tahu", "Eksplorasi Kreatif", "Jiwa Petualang", "Pesan Inspiratif"],
+        "reversedKeywords": ["Kabar Tertunda", "Rencana Tanpa Aksi", "Kekanak-kanakan", "Mudah Bosan"],
+        "description": "Seorang pemuda berpakaian jubah kuning bermotif salamander berdiri di padang pasir memandangi puncak tongkatnya yang bertunas dengan penuh rasa takjub dan rasa ingin tahu. Page of Wands melambangkan jiwa muda yang haus petualangan, pembawa pesan inspiratif, dan keberanian mencoba hal baru.",
+        "readings": {
+            "love": {
+                "title": "Pesan Manis dan Ketertarikan yang Menyenangkan",
+                "summary": "Komunikasi asmara yang ceria, penuh godaan jenaka (flirting), dan kejutan manis.",
+                "meaning": "Page of Wands membawa suasana segar dan menyenangkan dalam percintaan. Ada pesan teks yang membuatmu tersenyum seharian atau seseorang yang membawa energi ceria ke dalam hidupmu. Hubungan ini diwarnai oleh spontanitas dan keinginan saling mengenal lebih dalam.",
+                "advice": "Balas sinyal perhatian dengan candaan hangat; nikmati fase pendekatan tanpa membebani diri dengan ekspektasi kaku.",
+                "reflectionQuestion": "Candaan atau pesan manis apa yang ingin kamu kirimkan untuk menceriakan hari pasanganmu?",
+                "keywords": ["Pesan Manis", "Flirting Ceria", "Spontanitas Cinta", "Pendekatan Hangat"]
+            },
+            "work": {
+                "title": "Antusiasme Belajar dan Tugas Baru yang Menantang",
+                "summary": "Kemauan tinggi untuk menyerap ilmu baru dan mengeksplorasi teknologi terkini di kantor.",
+                "meaning": "Di lingkungan kerja, Page of Wands mencerminkan semangat magang atau pemula yang penuh energi positif. Kamu sangat antusias menerima penugasan baru dan tidak malu bertanya kepada senior. Pendekatan kreatifmu membawa angin segar bagi tim.",
+                "advice": "Tunjukkan inisiatif belajarmu secara aktif; jadilah orang pertama yang mendaftar pelatihan keterampilan baru.",
+                "reflectionQuestion": "Keahlian atau perangkat lunak baru apa yang saat ini paling ingin kamu kuasai di tempat kerja?",
+                "keywords": ["Semangat Belajar", "Inisiatif Pemula", "Keterampilan Baru", "Eksplorasi Kerja"]
+            },
+            "career": {
+                "title": "Pintu Pembuka Karier dan Kabar Panggilan Kerja",
+                "summary": "Mendapatkan undangan wawancara atau tawaran proyek awal yang menjanjikan.",
+                "meaning": "Karier di bawah pengaruh kartu ini menandakan kabar baik yang menjadi titik tolak perjalanan profesionalmu. Ini bisa berupa panggilan magang, proyek freelance pertama, atau undangan seleksi posisi baru. Jadikan kesempatan ini sebagai batu loncatan berharga.",
+                "advice": "Tunjukkan antusiasme dan rasa ingin tahu yang tinggi saat wawancara; sikap positifmu adalah nilai jual utamamu.",
+                "reflectionQuestion": "Peluang awal apa yang saat ini siap kamu manfaatkan untuk meniti karier impianmu?",
+                "keywords": ["Panggilan Wawancara", "Batu Loncatan", "Sikap Positif", "Awal Karier"]
+            },
+            "finance": {
+                "title": "Peluang Usaha Kecil dan Ide Bisnis Sampingan",
+                "summary": "Menghasilkan uang tambahan melalui hobi kreatif atau proyek sampingan.",
+                "meaning": "Secara finansial, Page of Wands menyarankan eksplorasi sumber pendapatan tambahan berbasis hobi atau kreativitas digital. Meskipun pemasukannya masih berskala kecil, proses ini memberikan pengalaman praktis yang sangat berharga untuk pengelolaan bisnis di masa depan.",
+                "advice": "Mulailah usaha sampingan dengan modal minimal; uji respon pasar sebelum menginvestasikan modal besar.",
+                "reflectionQuestion": "Hobi kreatif apa yang paling kamu sukai yang memiliki potensi untuk menghasilkan uang saku tambahan?",
+                "keywords": ["Bisnis Sampingan", "Monetisasi Hobi", "Modal Minimal", "Uji Pasar"]
+            },
+            "selfGrowth": {
+                "title": "Menyalakan Kembali Rasa Ingin Tahu Anak-anak",
+                "summary": "Melihat dunia dengan mata takjub dan tidak takut mencoba hal-hal yang belum pernah dilakukan.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang memelihara 'beginner's mind' (pikiran pemula). Jangan biarkan rutinitas membunuh rasa ingin tahumu. Pelajari topik yang sama sekali baru, kunjungi tempat asing, dan biarkan dirimu takjub oleh keajaiban-keajaiban kecil di sekitarmu.",
+                "advice": "Ikuti kelas atau kursus yang membuatmu penasaran; izinkan dirimu menjadi pemula yang bersemangat.",
+                "reflectionQuestion": "Hal baru apa yang selama ini membuatmu penasaran namun belum sempat kamu coba pelajari?",
+                "keywords": ["Beginner's Mind", "Rasa Ingin Tahu", "Jiwa Petualang", "Belajar Ceria"]
+            },
+            "relationships": {
+                "title": "Pertemanan yang Menyenangkan dan Bebas Drama",
+                "summary": "Menikmati kebersamaan bersama sahabat-sahabat yang membawa energi positif dan tawa.",
+                "meaning": "Dalam pergaulan dan keluarga, kehadiranmu membawa keceriaan yang mencairkan keheningan. Sahabat-sahabatmu senang berada di dekatmu karena kamu selalu memiliki cerita menarik atau ide kegiatan seru yang spontan.",
+                "advice": "Ajak teman-temanmu mencoba pengalaman baru bersama; ciptakan suasana pergaulan yang ringan dan saling mendukung.",
+                "reflectionQuestion": "Kabar gembira atau cerita seru apa yang ingin kamu bagikan ke sahabat-sahabatmu hari ini?",
+                "keywords": ["Energi Ceria", "Pertemanan Ringan", "Bebas Drama", "Cerita Menarik"]
+            },
+            "spirituality": {
+                "title": "Pencarian Spiritual yang Dipenuhi Kekaguman Murni",
+                "summary": "Menemukan keindahan tanda-tanda kebesaran Tuhan di setiap sudut alam semesta.",
+                "meaning": "Secara spiritual, Page of Wands adalah jiwa muda yang takjub memandang tunas hijau di puncak tongkatnya. Kamu diajak melihat ayat-ayat kauniyah (tanda kebesaran Tuhan di alam) dengan rasa kagum dan syukur yang tulus. Ibadahmu terasa hidup karena dipenuhi rasa rindu dan cinta.",
+                "advice": "Bermeditasilah sambil mengamati bunga mekar atau dedaunan hijau; rasakan betapa hidupnya alam semesta ini dalam pemeliharaan Tuhan.",
+                "reflectionQuestion": "Keajaiban alam apa yang hari ini paling mengingatkanmu akan kemahakuasaan Sang Pencipta?",
+                "keywords": ["Kekaguman Murni", "Ayat Kauniyah", "Ibadah Hidup", "Tunas Kehidupan"]
+            }
+        }
+    },
+    {
+        "id": "knight-of-wands",
+        "name": "Knight of Wands",
+        "slug": "knight-of-wands",
+        "image": "/assets/tarot/cards/Knight of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "Knight",
+        "uprightKeywords": ["Aksi Berani", "Energi Membara", "Petualang Tangguh", "Percaya Diri Tinggi", "Penuh Semangat"],
+        "reversedKeywords": ["Terburu-buru Ceroboh", "Emosi Meledak", "Tidak Sabaran", "Meninggalkan Tugas di Tengah"],
+        "description": "Seorang ksatria berbaju zirah lengkap dengan jubah kuning bergambar salamander menunggang kuda perang merah menyala yang sedang melompat menerjang padang pasir. Bulu-bulu merah berkibar dari helmnya. Knight of Wands melambangkan keberanian menerjang rintangan, aksi cepat tanpa ragu, karisma membara, dan semangat petualang.",
+        "readings": {
+            "love": {
+                "title": "Karisma Memikat dan Petualangan Asmara yang Mendebarkan",
+                "summary": "Hubungan cinta yang penuh gairah membara, kejutan mendadak, dan daya pikat tak tertahankan.",
+                "meaning": "Knight of Wands membawa magnetisme asmara yang sangat kuat. Ada seseorang yang datang ke dalam hidupmu dengan pesona penuh percaya diri yang mendebarkan hati. Bagi yang berpasangan, hubungan ini dipenuhi petualangan spontan dan gairah yang menyala-nyala.",
+                "advice": "Nikmati momen mendebarkan ini; namun pastikan gairah sesaat ini juga diimbangi oleh komitmen yang konsisten.",
+                "reflectionQuestion": "Bagaimana kamu menjaga agar api asmara yang membara ini tetap memiliki kedalaman komitmen jangka panjang?",
+                "keywords": ["Gairah Membara", "Pesona Karismatik", "Petualangan Asmara", "Spontanitas Mendebarkan"]
+            },
+            "work": {
+                "title": "Eksekusi Berani dan Mengambil Inisiatif Tantangan",
+                "summary": "Menuntaskan tugas-tugas berat dengan kecepatan tinggi dan keberanian menembus batas.",
+                "meaning": "Di lingkungan kerja, kamu adalah motor penggerak yang tidak kenal takut. Saat orang lain ragu-ragu mengambil proyek berisiko, kamu maju paling depan menawarkan solusi dan siap mengeksekusinya dengan kecepatan penuh. Energimu menginspirasi rekan kerja untuk bergerak lebih gesit.",
+                "advice": "Gunakan energimu yang meluap-luap untuk menyelesaikan proyek krusial; pastikan kamu tetap teliti terhadap rincian teknis.",
+                "reflectionQuestion": "Tantangan kerja berisiko apa yang saat ini siap kamu taklukkan dengan keberanian penuh?",
+                "keywords": ["Eksekusi Berani", "Motor Penggerak", "Kecepatan Kerja", "Menembus Batas"]
+            },
+            "career": {
+                "title": "Melompat Menuju Peluang Baru Tanpa Ragu",
+                "summary": "Keberanian mengambil risiko karier untuk mencapai lompatan profesional yang signifikan.",
+                "meaning": "Karier di bawah pengaruh Knight of Wands menandakan fase pergerakan dinamis. Kamu siap berpindah kantor, merintis ekspansi pasar baru, atau meluncurkan produk inovatif. Karisma kepemimpinanmu membuat klien dan investor percaya pada visimu.",
+                "advice": "Percayai insting keberanianmu; jangan biarkan rasa takut gagal menghalangi langkah besarmu.",
+                "reflectionQuestion": "Lompatan karier berani apa yang selama ini kamu dambakan dan kini waktunya untuk kamu wujudkan?",
+                "keywords": ["Lompatan Karier", "Karisma Memimpin", "Keberanian Berisiko", "Ekspansi Dinamis"]
+            },
+            "finance": {
+                "title": "Peluang Cepat dan Keberanian Berinvestasi",
+                "summary": "Mengambil momentum keuntungan finansial dengan tetap memperhitungkan risiko terukur.",
+                "meaning": "Secara finansial, kartu ini menandakan peluang perputaran uang yang cepat dari transaksi perdagangan atau proyek dinamis. Kamu memiliki keberanian untuk mengambil risiko modal, namun pastikan keputusanmu tetap didasari data riil, bukan spekulasi buta.",
+                "advice": "Ambil peluang yang menjanjikan dengan perhitungan cermat; jangan sampai nafsu mengejar keuntungan instan membutakanmu.",
+                "reflectionQuestion": "Apakah keputusan investasimu saat ini didasari kalkulasi rasional atau sekadar dorongan adrenalin?",
+                "keywords": ["Momentum Keuntungan", "Risiko Terukur", "Kalkulasi Cermat", "Perputaran Cepat"]
+            },
+            "selfGrowth": {
+                "title": "Menaklukkan Keraguan dengan Keberanian Beraksi",
+                "summary": "Mengubah rasa takut menjadi energi penggerak dan membuktikan kemampuan diri.",
+                "meaning": "Pengembangan diri kartu ini adalah tentang memutus siklus overthinking. Terlalu lama menganalisis sering kali membunuh keberanian. Knight of Wands mengajarkanmu bahwa cara terbaik mengalahkan keraguan adalah dengan melompat langsung ke dalam tindakan nyata.",
+                "advice": "Ambil langkah pertama sekarang juga; biarkan momentum tindakanmu menyempurnakan strategi di sepanjang jalan.",
+                "reflectionQuestion": "Keputusan apa yang selama ini paling sering kamu overthinking dan siap kamu eksekusi hari ini?",
+                "keywords": ["Hentikan Overthinking", "Keberanian Beraksi", "Momentum Tindakan", "Percaya Diri"]
+            },
+            "relationships": {
+                "title": "Menjadi Sosok Penggerak di Lingkaran Pertemanan",
+                "summary": "Membawa semangat petualangan dan mengajak teman-teman menaklukkan tantangan bersama.",
+                "meaning": "Dalam pergaulan dan keluarga, kamu adalah sosok karismatik yang selalu dinantikan kehadirannya. Kamu menginspirasi orang lain untuk berani mencoba hal-hal baru dan tidak mudah mengeluh di hadapan kesulitan hidup.",
+                "advice": "Gunakan pengaruhmu untuk membakar semangat sahabat yang sedang putus asa; jadilah teladan keberanian bagi mereka.",
+                "reflectionQuestion": "Siapa sahabatmu yang saat ini paling membutuhkan dorongan semangat dan keberanian darimu?",
+                "keywords": ["Inspirator Sahabat", "Karisma Sosial", "Membakar Semangat", "Teladan Keberanian"]
+            },
+            "spirituality": {
+                "title": "Ksatria Jiwa yang Memperjuangkan Kebaikan",
+                "summary": "Menjadikan seluruh energi hidup sebagai pengabdian untuk menegakkan keadilan dan kebajikan.",
+                "meaning": "Secara spiritual, Knight of Wands adalah ksatria rohani (spiritual warrior). Api di dalam dadamu adalah api cinta kepada kebenaran ilahi. Kamu terpanggil untuk tidak hanya beribadah secara pasif, melainkan aktif berjuang membantu mereka yang tertindas dan menyebarkan kebaikan.",
+                "advice": "Arahkan energimu untuk membela mereka yang lemah; jadikan hidupmu sebagai bukti nyata keberanian berbuat bajik.",
+                "reflectionQuestion": "Bagaimana caramu menggunakan keberanian dan energimu untuk melayani tujuan mulia di dunia ini?",
+                "keywords": ["Ksatria Rohani", "Pembela Kebajikan", "Api Kebenaran", "Pengabdian Aktif"]
+            }
+        }
+    },
+    {
+        "id": "queen-of-wands",
+        "name": "Queen of Wands",
+        "slug": "queen-of-wands",
+        "image": "/assets/tarot/cards/Queen of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "Queen",
+        "uprightKeywords": ["Kepercayaan Diri", "Karisma Hangat", "Kemandirian", "Kreativitas Memancar", "Keberanian Anggun"],
+        "reversedKeywords": ["Kecemburuan", "Tuntutan Berlebih", "Kekurangan Percaya Diri", "Manipulatif"],
+        "description": "Seorang ratu anggun duduk di atas takhta berukir dua singa dan bunga matahari, memegang bunga matahari di tangan kiri dan tongkat kayu di tangan kanan. Di depannya duduk seekor kucing hitam yang tenang. Queen of Wands melambangkan karisma hangat, kepercayaan diri yang memancar alami, kemandirian batin, dan daya tarik kreatif yang mempesona.",
+        "readings": {
+            "love": {
+                "title": "Pesona Anggun, Kemandirian, dan Kehangatan Cinta",
+                "summary": "Hubungan asmara yang dilandasi rasa saling menghargai kemandirian dan daya pikat yang hangat.",
+                "meaning": "Queen of Wands membawa energi cinta yang sangat memikat dan percaya diri. Kamu atau pasangan adalah sosok yang mandiri, ceria, dan penuh kehangatan. Hubungan ini tidak saling mengekang, melainkan saling merayakan keunikan dan kesuksesan masing-masing dengan penuh rasa bangga.",
+                "advice": "Pancarkan rasa percaya dirimu yang autentik; cintai dirimu sendiri dengan anggun dan berikan kehangatan kepada pasangan.",
+                "reflectionQuestion": "Bagaimana caramu menjaga kemandirian pribadimu tanpa mengurangi kehangatan kemesraan bersama pasangan?",
+                "keywords": ["Karisma Anggun", "Kemandirian Asmara", "Kehangatan Cinta", "Percaya Diri Memikat"]
+            },
+            "work": {
+                "title": "Kepemimpinan yang Menginspirasi dan Menyenangkan",
+                "summary": "Memimpin proyek dengan antusiasme tinggi, empati hangat, dan kemampuan komunikasi prima.",
+                "meaning": "Di lingkungan kerja, Queen of Wands adalah sosok pemimpin idola. Kamu mampu memotivasi tim tanpa perlu bersikap otoriter; orang-orang senang bekerja bersamamu karena energimu yang optimis dan suportif. Ide-ide kreatifmu dieksekusi dengan keanggunan yang luar biasa.",
+                "advice": "Bimbing rekan kerjamu dengan apresiasi dan dorongan positif; jadilah figur pelindung yang membawa semangat kerja tinggi.",
+                "reflectionQuestion": "Bagaimana caramu menyemangati anggota tim yang sedang kehilangan motivasi kerja?",
+                "keywords": ["Pemimpin Inspiratif", "Atmosfer Optimis", "Komunikasi Prima", "Empati Hangat"]
+            },
+            "career": {
+                "title": "Membangun Personal Branding yang Bersinar",
+                "summary": "Dikenal luas sebagai profesional yang kompeten, karismatik, dan berintegritas tinggi.",
+                "meaning": "Karier di bawah pengaruh kartu ini menandakan masa kejayaan reputasi profesionalmu. Portofolio dan pesonamu memikat klien-klien bergengsi. Kamu memiliki otoritas alami yang membuat suaramu didengar dan dihormati di industri yang kamu geluti.",
+                "advice": "Kembangkan personal branding-mu dengan keaslian dan integritas; jangan ragu tampil di garis depan industri.",
+                "reflectionQuestion": "Karya atau nilai unik apa yang paling ingin kamu tonjolkan dalam reputasi profesionalmu?",
+                "keywords": ["Personal Branding", "Karisma Industri", "Otoritas Alami", "Reputasi Bersinar"]
+            },
+            "finance": {
+                "title": "Kemandirian Finansial dan Pengelolaan Aset Elegan",
+                "summary": "Mampu menghasilkan rezeki mandiri dan mengelola kekayaan dengan selera berkelas.",
+                "meaning": "Secara finansial, Queen of Wands adalah simbol kemandirian materi. Kamu memiliki insting bisnis yang tajam dan mampu menghasilkan uang dari kreativitasmu sendiri. Kamu menikmati hasil jerih payahmu untuk meningkatkan kualitas hidup dengan elegan dan bijak.",
+                "advice": "Pertahankan kemandirian finansialmu; investasikan danamu pada aset yang mencerminkan visi jangka panjangmu.",
+                "reflectionQuestion": "Bagaimana kamu memanfaatkan kemandirian finansialmu untuk menciptakan kenyamanan bagi orang-orang tercinta?",
+                "keywords": ["Kemandirian Materi", "Insting Bisnis", "Gaya Hidup Elegan", "Aset Berkualitas"]
+            },
+            "selfGrowth": {
+                "title": "Mencintai Diri Sendiri Tanpa Rasa Takut Dihakimi",
+                "summary": "Menerima seluruh keunikan dirimu dan memancarkan keberanian batin yang tak tergoyahkan.",
+                "meaning": "Pengembangan diri kartu ini adalah puncak keanggunan batin. Bunga matahari melambangkan jiwa yang selalu menghadap ke cahaya kebaikan. Kucing hitam melambangkan penguasaan atas sisi bayangan batinmu. Kamu tidak lagi minder atau mencari validasi luar; kamu tahu persis nilai dirimu.",
+                "advice": "Berdirilah dengan tegak dan tersenyumlah; biarkan keunikan dan kehangatan kepribadianmu menyinari dunia.",
+                "reflectionQuestion": "Bagian mana dari pesona dan bakat unikmu yang selama ini kamu sembunyikan karena takut dinilai orang lain?",
+                "keywords": ["Keanggunan Batin", "Validasi Diri", "Cahaya Kebaikan", "Menghargai Diri"]
+            },
+            "relationships": {
+                "title": "Tuan Rumah yang Ramah dan Pusat Kehangatan Sosial",
+                "summary": "Menciptakan suasana rumah yang ramah dan menjadi tempat bernaung bagi para sahabat.",
+                "meaning": "Dalam pergaulan dan keluarga, energimu seperti matahari hangat yang dirindukan semua orang. Kamu adalah sahabat yang setia, pendengar yang menyenangkan, dan tuan rumah yang selalu menyajikan kehangatan bagi siapa pun yang berkunjung ke rumahmu.",
+                "advice": "Teruslah menebarkan kehangatan dan kebaikan; berikan apresiasi kepada sahabat-sahabat yang setia mendampingimu.",
+                "reflectionQuestion": "Bagaimana caramu menjaga pintu hatimu tetap ramah bagi orang lain tanpa mengorbankan batas privasimu?",
+                "keywords": ["Kehangatan Rumah", "Tuan Rumah Ramah", "Pusat Kebaikan", "Sahabat Setia"]
+            },
+            "spirituality": {
+                "title": "Matahari Jiwa yang Menghadap Cahaya Ilahi",
+                "summary": "Menyadari bahwa jiwa yang suci senantiasa memancarkan kehangatan cinta kasih Tuhan ke sekelilingnya.",
+                "meaning": "Secara spiritual, Queen of Wands melambangkan jiwa yang telah disucikan dan dipenuhi rasa cinta kepada Tuhan. Layaknya bunga matahari yang senantiasa menoleh ke arah surya, seluruh pikiran dan tindakanmu berorientasi pada kebaikan ilahi. Kehadiranmu saja sudah menjadi dakwah kebajikan.",
+                "advice": "Jadikan senyuman dan kebaikan hatimu sebagai sedekah harian; pancarkan kasih ilahi kepada sesama makhluk.",
+                "reflectionQuestion": "Bagaimana caramu memancarkan nilai-nilai ketuhanan melalui sikap ramah dan santun sepanjang hari?",
+                "keywords": ["Matahari Jiwa", "Cinta Kasih Ilahi", "Sedekah Senyuman", "Kehadiran Berkah"]
+            }
+        }
+    },
+    {
+        "id": "king-of-wands",
+        "name": "King of Wands",
+        "slug": "king-of-wands",
+        "image": "/assets/tarot/cards/King of Wands.jpg",
+        "arcana": "minor",
+        "suit": "wands",
+        "rank": "King",
+        "uprightKeywords": ["Visi Kepemimpinan", "Kewirausahaan", "Kekuasaan Berwibawa", "Inspirasi Strategis", "Keberanian Memimpin"],
+        "reversedKeywords": ["Otoriter Keras", "Ego Membutakan", "Tuntutan Tidak Realistis", "Kehilangan Kesabaran"],
+        "description": "Seorang raja agung duduk di takhta berhias singa dan salamander yang menggigit ekornya sendiri (ouroboros). Ia memegang tongkat berbunga di tangan kanan dengan jubah keemasan berkobar. King of Wands melambangkan penguasaan tertinggi atas elemen api: kepemimpinan visioner, jiwa kewirausahaan yang matang, kewibawaan yang disegani, dan kemampuan mewujudkan impian besar menjadi kenyataan.",
+        "readings": {
+            "love": {
+                "title": "Komitmen yang Hangat, Melindungi, dan Berwibawa",
+                "summary": "Hubungan asmara yang dilandasi visi masa depan yang jelas, kesetiaan, dan perlindungan penuh kasih.",
+                "meaning": "King of Wands dalam percintaan menandakan figur pasangan yang matang, setia, dan siap memimpin biduk rumah tangga dengan keteladanan. Hubungan ini memiliki kepastian arah masa depan yang kokoh di mana rasa aman dan gairah asmara berpadu secara harmonis.",
+                "advice": "Tunjukkan komitmenmu melalui keteladanan tindakan nyata; bimbing hubunganmu menuju tujuan masa depan yang mulia.",
+                "reflectionQuestion": "Bagaimana caramu memadukan ketegasan prinsip dengan kelembutan kasih dalam memimpin hubungan?",
+                "keywords": ["Keteladanan Asmara", "Perlindungan Penuh", "Komitmen Masa Depan", "Wibawa Hangat"]
+            },
+            "work": {
+                "title": "Kepemimpinan Visioner dan Pengambilan Keputusan Strategis",
+                "summary": "Memimpin divisi atau perusahaan dengan visi yang jelas dan kemampuan menggerakkan tim secara efektif.",
+                "meaning": "Di lingkungan kerja, kamu berada pada posisi penentu arah strategis. Kemampuanmu melihat gambaran besar (big picture) dan memotivasi tim menjadikanmu pemimpin yang sangat disegani. Kamu tidak ragu mengambil tanggung jawab atas keputusan-keputusan krusial.",
+                "advice": "Fokuskan energimu pada visi jangka panjang; berdayakan manajer bawahanmu untuk mengeksekusi operasional harian.",
+                "reflectionQuestion": "Visi besar apa yang ingin kamu capai bersama organisasimu dalam tiga hingga lima tahun mendatang?",
+                "keywords": ["Visi Strategis", "Kepemimpinan Visioner", "Big Picture", "Pengambil Keputusan"]
+            },
+            "career": {
+                "title": "Puncak Kewirausahaan dan Pengaruh Eksekutif",
+                "summary": "Membangun imperium bisnis atau menduduki posisi dewan pimpinan yang berpengaruh luas.",
+                "meaning": "Karier di bawah pengaruh King of Wands mencerminkan kesuksesan seorang entrepreneur atau eksekutif senior sejati. Ide-ide bisnismu telah terbukti berhasil menciptakan lapangan kerja dan memberi nilai ekonomi nyata. Reputasimu adalah aset paling berharga.",
+                "advice": "Gunakan pengaruh kekuasaanmu untuk menciptakan warisan kebaikan; bimbinglah para inovator muda untuk bertumbuh.",
+                "reflectionQuestion": "Warisan dan legasi apa yang ingin kamu tinggalkan melalui karya kewirausahaanmu?",
+                "keywords": ["Jiwa Wirausaha", "Eksekutif Senior", "Menciptakan Dampak", "Legasi Kepemimpinan"]
+            },
+            "finance": {
+                "title": "Penguasaan Portofolio Aset dan Kemakmuran Mandiri",
+                "summary": "Kekayaan materi yang dihasilkan dari visi bisnis yang teruji dan investasi produktif.",
+                "meaning": "Secara finansial, King of Wands adalah simbol penguasaan modal skala besar. Kamu memiliki kematangan dalam mengalokasikan investasi pada proyek-proyek strategis berimbal hasil tinggi. Stabilitas keuanganmu mapan dan mampu menopang proyek-proyek filantropi besar.",
+                "advice": "Kelola asetmu dengan visi keberlanjutan lintas generasi; investasikan pada sektor yang mendorong kemakmuran bersama.",
+                "reflectionQuestion": "Bagaimana caramu mengalokasikan kekayaan untuk memberdayakan ekonomi masyarakat sekitar?",
+                "keywords": ["Penguasaan Modal", "Kemakmuran Mapan", "Investasi Strategis", "Filantropi Berkelanjutan"]
+            },
+            "selfGrowth": {
+                "title": "Kematangan Emosi dan Kedaulatan Batin",
+                "summary": "Mampu mengendalikan api kemarahan menjadi kehangatan kepemimpinan yang bijak.",
+                "meaning": "Pengembangan diri kartu King of Wands adalah penguasaan penuh atas energi api di dalam diri. Salamander yang menggigit ekornya melambangkan siklus energi yang terkendali sempurna. Kamu tidak lagi reaktif atau meledak-ledak; kamu tenang, berwibawa, dan menguasai dirimu seutuhnya.",
+                "advice": "Pimpinlah dirimu sendiri sebelum memimpin orang lain; jadikan ketenangan pikiran sebagai fondasi kewibawaanmu.",
+                "reflectionQuestion": "Apakah keputusan-keputusan hidupmu saat ini sudah dipandu oleh visi kebijaksanaan yang matang?",
+                "keywords": ["Penguasaan Diri", "Kedaulatan Batin", "Ketenangan Wibawa", "Kematangan Jiwa"]
+            },
+            "relationships": {
+                "title": "Sosok Pengayom Keluarga dan Tiang Komunitas",
+                "summary": "Menjadi panutan keluarga besar yang memberikan arahan bijak dan perlindungan aman.",
+                "meaning": "Dalam pergaulan dan keluarga, kamu dihormati sebagai kepala keluarga atau sesepuh komunitas yang suaranya selalu didengar dalam musyawarah. Kamu mengayomi dengan tegas namun penuh cinta, menciptakan rasa aman bagi seluruh generasi penerus.",
+                "advice": "Dengarkan aspirasi generasi muda dengan bijak; berikan mereka ruang untuk berkarya di bawah bimbinganmu.",
+                "reflectionQuestion": "Nilai-nilai luhur apa yang paling penting untuk kamu wariskan kepada anak cucu dan keluargamu?",
+                "keywords": ["Pengayom Keluarga", "Panutan Komunitas", "Arahan Bijak", "Warisan Nilai"]
+            },
+            "spirituality": {
+                "title": "Kekuatan Rohani yang Menegakkan Keadilan dan Rahmat",
+                "summary": "Menyadari bahwa amanah kepemimpinan adalah ujian pertanggungjawaban di hadapan Tuhan.",
+                "meaning": "Secara spiritual, King of Wands melambangkan kepemimpinan yang adil (khalifah di muka bumi). Kamu memahami bahwa kekuasaan, pengaruh, dan harta benda hanyalah titipan sementara. Jiwamu tunduk dalam kerendahan hati kepada Sang Raja Diraja, memohon bimbingan agar setiap keputusanmu membawa keadilan dan kemaslahatan.",
+                "advice": "Jadikan kepemimpinanmu sebagai sarana beribadah; mohonlah bimbingan ilahi agar hatimu senantiasa condong kepada keadilan.",
+                "reflectionQuestion": "Bagaimana caramu mempertanggungjawabkan amanah kepemimpinan dan pengaruhmu di hadapan Tuhan?",
+                "keywords": ["Khalifah Adil", "Amanah Kepemimpinan", "Pertanggungjawaban Ilahi", "Kemaslahatan Ummat"]
+            }
+        }
+    }
+]
+
+print(f"Loaded all {len(WANDS_CARDS)} Wands cards successfully!")

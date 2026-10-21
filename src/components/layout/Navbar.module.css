@@ -1,0 +1,147 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  z-index: 100;
+  transition: all 0.3s ease;
+  background: rgba(8, 7, 17, 0.4);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+}
+
+.isScrolled {
+  background: rgba(8, 7, 17, 0.88);
+  backdrop-filter: blur(14px);
+  border-bottom-color: rgba(217, 181, 109, 0.18);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.navContainer {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.brandLogo {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 8px rgba(217, 181, 109, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.brand:hover .brandLogo {
+  transform: rotate(30deg) scale(1.05);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-gold-light);
+  line-height: 1.1;
+}
+
+.brandTagline {
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--color-primary-soft);
+  font-weight: 600;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 640px) {
+  .navLinks {
+    display: none;
+  }
+}
+
+.navItem {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  color: var(--color-gold-light);
+  background: rgba(155, 123, 255, 0.1);
+}
+
+.badge {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 999px;
+  line-height: 1.2;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconButton {
+  background: rgba(23, 19, 39, 0.7);
+  border: 1px solid rgba(217, 181, 109, 0.25);
+  color: var(--color-text-secondary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.iconButton:hover {
+  color: var(--color-gold);
+  border-color: var(--color-gold);
+  background: rgba(33, 26, 56, 0.9);
+  transform: translateY(-1px);
+}
+
+.activeSetting {
+  color: var(--color-gold-light);
+  border-color: var(--color-gold);
+  background: rgba(217, 181, 109, 0.15);
+  box-shadow: 0 0 10px rgba(217, 181, 109, 0.25);
+}

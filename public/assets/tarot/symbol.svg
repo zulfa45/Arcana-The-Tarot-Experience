@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <radialGradient id="arcanaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D9B56D" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#9B7BFF" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#080711" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F0D9A0"/>
+      <stop offset="50%" stop-color="#D9B56D"/>
+      <stop offset="100%" stop-color="#A57D32"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#arcanaGlow)"/>
+  <circle cx="50" cy="50" r="44" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <circle cx="50" cy="50" r="38" stroke="#9B7BFF" stroke-width="1" stroke-opacity="0.5"/>
+  <!-- 8 pointed celestial star -->
+  <path d="M50 16 L53 44 L68 32 L56 47 L84 50 L56 53 L68 68 L53 56 L50 84 L47 56 L32 68 L44 53 L16 50 L44 47 L32 32 L47 44 Z" fill="url(#goldGrad)"/>
+  <circle cx="50" cy="50" r="4" fill="#FFFFFF"/>
+</svg>

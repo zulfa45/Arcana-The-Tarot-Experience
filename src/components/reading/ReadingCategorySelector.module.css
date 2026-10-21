@@ -1,0 +1,112 @@
+.selectorContainer {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 4px;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  margin: 6px auto 0;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryCard {
+  background: rgba(23, 19, 39, 0.6);
+  border: 1px solid rgba(217, 181, 109, 0.2);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryCard:hover {
+  background: rgba(33, 26, 56, 0.8);
+  border-color: rgba(217, 181, 109, 0.45);
+  transform: translateY(-2px);
+}
+
+.categoryCard.isActive {
+  background: linear-gradient(135deg, rgba(155, 123, 255, 0.2), rgba(217, 181, 109, 0.15));
+  border-color: var(--color-gold);
+  box-shadow: 0 0 20px rgba(217, 181, 109, 0.2);
+}
+
+.iconCircle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(155, 123, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primary-soft);
+  transition: all 0.25s ease;
+}
+
+.categoryCard.isActive .iconCircle {
+  background: var(--color-gold);
+  color: #080711;
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryLabel {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.categoryCard.isActive .categoryLabel {
+  color: var(--color-gold-light);
+}
+
+.categoryDesc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.3;
+}

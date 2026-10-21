@@ -1,0 +1,234 @@
+.modalContent {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 28px;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.visualCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.cardFrameWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.metaBadgeBox {
+  width: 100%;
+  background: rgba(16, 13, 29, 0.7);
+  border: 1px solid rgba(217, 181, 109, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.metaLabel {
+  color: var(--color-text-muted);
+}
+
+.metaValue {
+  color: var(--color-gold-light);
+  font-weight: 600;
+}
+
+.keywordsBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.keywordsTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.tagWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.uprightBadge {
+  font-size: 0.7rem;
+  color: #79f2c0;
+  background: rgba(121, 242, 192, 0.1);
+  border: 1px solid rgba(121, 242, 192, 0.3);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.reversedBadge {
+  font-size: 0.7rem;
+  color: #ff9b9b;
+  background: rgba(255, 155, 155, 0.1);
+  border: 1px solid rgba(255, 155, 155, 0.3);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+/* Right Details Column */
+.detailsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.overviewBox {
+  background: rgba(23, 19, 39, 0.7);
+  border: 1px solid rgba(155, 123, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.overviewTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sparkleIcon {
+  color: var(--color-gold);
+}
+
+.overviewTitle h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--color-gold-light);
+  font-weight: 600;
+}
+
+.generalText {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.categoryNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.categoryNavTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tabButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tabBtn {
+  background: rgba(16, 13, 29, 0.8);
+  border: 1px solid rgba(217, 181, 109, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabBtn:hover {
+  background: rgba(33, 26, 56, 0.9);
+  color: var(--color-text);
+  border-color: rgba(217, 181, 109, 0.4);
+}
+
+.tabBtnActive {
+  background: var(--color-gold);
+  color: #080711;
+  border-color: var(--color-gold);
+  font-weight: 600;
+}
+
+.tabBody {
+  background: rgba(16, 13, 29, 0.85);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.infoTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accentIcon {
+  color: var(--color-gold);
+}
+
+.infoTitle h5 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.infoGroup p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.questionsBox {
+  border-top: 1px dashed rgba(217, 181, 109, 0.2);
+  padding-top: 14px;
+}
+
+.questionsBox ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.questionsBox li {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}

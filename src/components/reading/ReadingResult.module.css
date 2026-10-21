@@ -1,0 +1,250 @@
+.resultSection {
+  position: relative;
+  width: 100%;
+  padding: 40px 24px 80px;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Header Banner */
+.cardHeaderBanner {
+  background: linear-gradient(135deg, rgba(23, 19, 39, 0.95), rgba(16, 13, 29, 0.95));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .cardHeaderBanner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+}
+
+.bannerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.arcanaBadge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--color-primary-soft);
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-gold-light);
+  line-height: 1.2;
+}
+
+.orientationStatus {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.uprightTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #79f2c0;
+  background: rgba(121, 242, 192, 0.12);
+  border: 1px solid rgba(121, 242, 192, 0.3);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.reversedTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #ff9b9b;
+  background: rgba(255, 155, 155, 0.12);
+  border: 1px solid rgba(255, 155, 155, 0.3);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.bannerActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* General Overview Card */
+.overviewCard {
+  background: rgba(16, 13, 29, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(155, 123, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.overviewHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.overviewHeader h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.accentIcon {
+  color: var(--color-gold);
+}
+
+.generalMeaningText {
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.keywordsList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keywordsTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.keywordBadge {
+  font-size: 0.75rem;
+  background: rgba(155, 123, 255, 0.12);
+  color: var(--color-primary-soft);
+  border: 1px solid rgba(155, 123, 255, 0.25);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* Interpretation Panel */
+.interpretationPanel {
+  margin-top: 24px;
+  background: linear-gradient(180deg, rgba(23, 19, 39, 0.9) 0%, rgba(16, 13, 29, 0.95) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  .interpretationPanel {
+    padding: 20px;
+  }
+}
+
+.interpretationHeader {
+  border-bottom: 1px solid rgba(217, 181, 109, 0.18);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.categoryTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.categoryTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  text-transform: uppercase;
+}
+
+.interpretationHeading {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-gold-light);
+  font-weight: 700;
+}
+
+.sectionBlock {
+  margin-bottom: 24px;
+}
+
+.sectionTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.blockIcon {
+  color: var(--color-gold);
+}
+
+.sectionTitleRow h4 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.sectionBody {
+  color: var(--color-text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+/* Reflection Block */
+.reflectionBlock {
+  background: rgba(8, 7, 17, 0.5);
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(217, 181, 109, 0.25);
+  padding: 20px;
+  margin-top: 28px;
+}
+
+.questionsList {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.questionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--color-text);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.questionBullet {
+  color: var(--color-gold);
+  font-size: 0.9rem;
+}

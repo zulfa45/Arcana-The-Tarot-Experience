@@ -1,0 +1,143 @@
+.gachaSection {
+  position: relative;
+  min-height: 80vh;
+  padding: 80px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.celestialAura {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.astrologicalCircle {
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  border: 1px dashed rgba(217, 181, 109, 0.2);
+  box-shadow: 0 0 60px rgba(155, 123, 255, 0.1);
+  animation: rotateSlow 80s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .astrologicalCircle {
+    width: 340px;
+    height: 340px;
+  }
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.headerArea {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sparkleIcon {
+  color: var(--color-gold-light);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+  background: linear-gradient(180deg, #ffffff 20%, #d9b56d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.instructionText {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  max-width: 520px;
+  line-height: 1.6;
+  min-height: 2.5rem;
+  transition: color 0.3s ease;
+}
+
+/* Altar Stage */
+.altarStage {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 32px;
+}
+
+@media (max-width: 640px) {
+  .altarStage {
+    min-height: 400px;
+  }
+}
+
+.spotlightGlow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 123, 255, 0.2) 0%, rgba(217, 181, 109, 0.1) 45%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.deckWrapper,
+.revealedCardWrapper,
+.flyingCardContainer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Controls Area */
+.controlsArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 54px;
+}
+
+.revealPulseBtn {
+  animation: celestialPulse 2.5s infinite ease-in-out;
+}
+
+.revealedActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
