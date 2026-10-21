@@ -33,6 +33,23 @@ export function drawRandomCard(allowSameAsLast = false): TarotCard {
 }
 
 /**
+ * Draws N unique random cards for the fan spread.
+ */
+export function drawMultipleRandomCards(count: number): TarotCard[] {
+  if (TAROT_CARDS.length === 0) return [];
+  const safeCount = Math.min(count, TAROT_CARDS.length);
+  
+  // Clone and shuffle using Fisher-Yates
+  const shuffled = [...TAROT_CARDS];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled.slice(0, safeCount);
+}
+
+/**
  * Determines card orientation based on configuration.
  * If allowReversed is true, ~25% chance of being reversed (standard traditional probability).
  */

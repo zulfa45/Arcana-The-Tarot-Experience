@@ -42,8 +42,10 @@ export const App: React.FC = () => {
   const {
     phase,
     card: currentCard,
+    fannedCards,
     orientation,
     startGacha,
+    pickCardFromFan,
     revealCard,
     resetSession,
   } = useTarotGacha({ allowReversed });
@@ -138,12 +140,14 @@ export const App: React.FC = () => {
           onExploreCards={() => setIsLibraryOpen(true)}
         />
 
-        {/* Interactive Gacha Altar */}
+        {/* Interactive Gacha Altar with Jembereng Kartu (Fan Spread) */}
         <TarotGachaSection
           phase={phase}
           currentCard={currentCard}
+          fannedCards={fannedCards}
           isReversed={isReversed}
           onShuffle={startGacha}
+          onPickCardFromFan={pickCardFromFan}
           onReveal={revealCard}
           onReset={resetSession}
           reducedMotion={reducedMotion}

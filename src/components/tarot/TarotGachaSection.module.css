@@ -36,7 +36,7 @@
 .contentContainer {
   position: relative;
   z-index: 2;
-  max-width: 700px;
+  max-width: 760px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -46,7 +46,7 @@
 }
 
 .headerArea {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .eyebrow {
@@ -81,7 +81,7 @@
 .instructionText {
   font-size: 1.05rem;
   color: var(--color-text-secondary);
-  max-width: 520px;
+  max-width: 540px;
   line-height: 1.6;
   min-height: 2.5rem;
   transition: color 0.3s ease;
@@ -95,19 +95,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 32px;
+  margin: 10px 0 28px;
 }
 
 @media (max-width: 640px) {
   .altarStage {
-    min-height: 400px;
+    min-height: 380px;
+    margin: 4px 0 20px;
   }
 }
 
 .spotlightGlow {
   position: absolute;
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(155, 123, 255, 0.2) 0%, rgba(217, 181, 109, 0.1) 45%, transparent 70%);
   filter: blur(40px);
@@ -116,8 +117,9 @@
 
 .deckWrapper,
 .revealedCardWrapper,
-.flyingCardContainer {
+.fanSpreadWrapper {
   position: absolute;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,8 +134,20 @@
   min-height: 54px;
 }
 
-.revealPulseBtn {
-  animation: celestialPulse 2.5s infinite ease-in-out;
+.fannedInstructionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.fannedHint {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-light);
+  text-transform: uppercase;
+  animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
 .revealedActions {

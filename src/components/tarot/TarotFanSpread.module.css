@@ -1,0 +1,102 @@
+.fanContainer {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+@media (max-width: 640px) {
+  .fanContainer {
+    height: 300px;
+    max-width: 100%;
+  }
+}
+
+.fanArc {
+  position: relative;
+  width: 180px;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .fanArc {
+    width: 130px;
+    height: 220px;
+  }
+}
+
+.fanCardWrapper {
+  position: absolute;
+  width: 160px;
+  height: 272px;
+  cursor: pointer;
+  user-select: none;
+  transform-origin: 50% 120%;
+  border-radius: var(--radius-md);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .fanCardWrapper {
+    width: 120px;
+    height: 204px;
+    transform-origin: 50% 110%;
+  }
+}
+
+.fanCardWrapper:focus-visible .cardInner {
+  outline: 2px solid var(--color-gold);
+  box-shadow: 0 0 20px rgba(217, 181, 109, 0.6);
+}
+
+.fanCardWrapper.isDisabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.75), 0 0 12px rgba(155, 123, 255, 0.2);
+  background: var(--color-surface);
+  transition: box-shadow 0.25s ease;
+}
+
+.fanCardWrapper:hover .cardInner {
+  box-shadow: 0 18px 35px -6px rgba(0, 0, 0, 0.9), 0 0 25px rgba(217, 181, 109, 0.5);
+}
+
+.cardBackImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 4px;
+  border-radius: var(--radius-md);
+}
+
+.cardBorder {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(217, 181, 109, 0.35);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+.cardSheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+}

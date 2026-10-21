@@ -70,6 +70,7 @@ export type GachaPhase =
   | 'idle'
   | 'shuffling'
   | 'flying'
+  | 'fanned'
   | 'waiting-to-reveal'
   | 'revealing'
   | 'revealed';

@@ -3,15 +3,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TarotCard as TarotCardType, GachaPhase } from '../../types/tarot';
 import { TarotDeck } from './TarotDeck';
 import { TarotCard } from './TarotCard';
+import { TarotFanSpread } from './TarotFanSpread';
 import { Button } from '../ui/Button';
-import { Sparkles, Shuffle, Eye, RotateCcw } from 'lucide-react';
+import { Sparkles, Shuffle, RotateCcw } from 'lucide-react';
 import styles from './TarotGachaSection.module.css';
 
 interface TarotGachaSectionProps {
   phase: GachaPhase;
   currentCard: TarotCardType | null;
+  fannedCards?: TarotCardType[];
   isReversed: boolean;
   onShuffle: () => void;
+  onPickCardFromFan: (card: TarotCardType) => void;
   onReveal: () => void;
   onReset: () => void;
   reducedMotion?: boolean;
@@ -20,9 +23,10 @@ interface TarotGachaSectionProps {
 export const TarotGachaSection: React.FC<TarotGachaSectionProps> = ({
   phase,
   currentCard,
+  fannedCards = [],
   isReversed,
   onShuffle,
-  onReveal,
+  onPickCardFromFan,
   onReset,
   reducedMotion = false,
 }) => {
@@ -30,24 +34,25 @@ export const TarotGachaSection: React.FC<TarotGachaSectionProps> = ({
   const getInstruction = () => {
     switch (phase) {
       case 'idle':
-        return 'Tarik napas perlahan, jernihkan pikiranmu, dan acak kartu tarot.';
+        return 'Tarik napas perlahan, jernihkan pikiranmu, dan kocok kartu tarot.';
       case 'shuffling':
-        return 'Energi semesta sedang menyelaraskan takdir kartumu...';
+        return 'Energi semesta sedang mengocok dan menyelaraskan kartumu...';
+      case 'fanned':
+        return 'Pilih 1 kartu yang memanggil intuisimu dari jemberengan di bawah.';
       case 'flying':
-        return 'Satu kartu telah terpilih dari kedalaman semesta!';
       case 'waiting-to-reveal':
-        return 'Sentuh kartu atau tekan tombol untuk mengungkap misteri.';
+        return 'Menarik kartu pilihanmu ke tengah altar...';
       case 'revealing':
         return 'Membuka tabir nasib...';
       case 'revealed':
-        return 'Kartumu telah terungkap. Temukan pesan di baliknya di bawah ini.';
+        return 'Kartumu telah terungkap! Temukan pesan arketipenya di bawah ini.';
       default:
         return '';
     }
   };
 
   const isDeckVisible = phase === 'idle' || phase === 'shuffling';
-  const isFlying = phase === 'flying';
+  const isFannedVisible = phase === 'fanned';
   const isCardVisible =
     phase === 'waiting-to-reveal' || phase === 'revealing' || phase === 'revealed';
 
@@ -95,55 +100,46 @@ export const TarotGachaSection: React.FC<TarotGachaSectionProps> = ({
             )}
           </AnimatePresence>
 
-          {/* 2. Flying Card Transition (Deck -> Center Altar) */}
-          <AnimatePresence>
-            {isFlying && (
+          {/* 2. Jembereng Kartu (Fan Spread Area - User chooses 1 card) */}
+          <AnimatePresence mode="wait">
+            {isFannedVisible && (
               <motion.div
-                key="flying-card"
-                className={styles.flyingCardContainer}
-                initial={
-                  reducedMotion
-                    ? { opacity: 0, scale: 0.5 }
-                    : { y: -80, scale: 0.65, rotate: -25, opacity: 0 }
-                }
-                animate={
-                  reducedMotion
-                    ? { opacity: 1, scale: 1 }
-                    : {
-                        y: [ -80, -180, 0 ],
-                        scale: [ 0.65, 1.15, 1 ],
-                        rotate: [ -25, 15, 0 ],
-                        opacity: [ 0, 1, 1 ],
-                      }
-                }
-                transition={{
-                  duration: 0.85,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                key="fan-spread"
+                initial={{ opacity: 0, scale: 0.85, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.3 } }}
+                className={styles.fanSpreadWrapper}
               >
-                <TarotCard card={null} isRevealed={false} size="lg" glow />
+                <TarotFanSpread
+                  cards={fannedCards}
+                  onSelectCard={(selected) => onPickCardFromFan(selected)}
+                  disabled={phase !== 'fanned'}
+                />
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* 3. Revealed / Waiting to Reveal Card */}
+          {/* 3. Revealed / Waiting to Reveal Card (After user picks from fan) */}
           <AnimatePresence>
-            {isCardVisible && (
+            {isCardVisible && currentCard && (
               <motion.div
                 key="revealed-card-slot"
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
+                initial={
+                  reducedMotion
+                    ? { opacity: 0, scale: 0.9 }
+                    : { opacity: 0, scale: 0.7, y: 40 }
+                }
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.5, type: 'spring', stiffness: 140, damping: 16 }}
                 className={styles.revealedCardWrapper}
               >
                 <TarotCard
                   card={currentCard}
                   isRevealed={phase === 'revealed'}
                   isReversed={isReversed}
-                  onClick={phase === 'waiting-to-reveal' ? onReveal : undefined}
                   size="lg"
-                  interactive={phase === 'waiting-to-reveal'}
-                  glow={phase === 'waiting-to-reveal'}
+                  interactive={false}
+                  glow={phase === 'revealed'}
                   showKeywords={phase === 'revealed'}
                 />
               </motion.div>
@@ -161,7 +157,7 @@ export const TarotGachaSection: React.FC<TarotGachaSectionProps> = ({
               onClick={onShuffle}
               glowEffect
             >
-              Shuffle the Cards
+              Kocok Kartu
             </Button>
           )}
 
@@ -172,38 +168,40 @@ export const TarotGachaSection: React.FC<TarotGachaSectionProps> = ({
               isLoading
               disabled
             >
-              Shuffling...
+              Mengocok Kartu...
             </Button>
           )}
 
-          {phase === 'waiting-to-reveal' && (
-            <Button
-              variant="primary"
-              size="lg"
-              icon={<Eye size={20} />}
-              onClick={onReveal}
-              glowEffect
-              className={styles.revealPulseBtn}
-            >
-              Reveal Your Card
-            </Button>
+          {phase === 'fanned' && (
+            <div className={styles.fannedInstructionBox}>
+              <span className={styles.fannedHint}>✦ Sentuh salah satu kartu untuk membukanya ✦</span>
+              <Button
+                variant="outline"
+                size="sm"
+                icon={<RotateCcw size={15} />}
+                onClick={onReset}
+              >
+                Kocok Ulang
+              </Button>
+            </div>
           )}
 
-          {phase === 'revealing' && (
+          {(phase === 'waiting-to-reveal' || phase === 'revealing') && (
             <Button variant="secondary" size="lg" disabled isLoading>
-              Opening Card...
+              Membuka Kartu Pilihanmu...
             </Button>
           )}
 
           {phase === 'revealed' && (
             <div className={styles.revealedActions}>
               <Button
-                variant="outline"
-                size="md"
-                icon={<RotateCcw size={16} />}
+                variant="primary"
+                size="lg"
+                icon={<RotateCcw size={18} />}
                 onClick={onReset}
+                glowEffect
               >
-                Tarik Kartu Lain
+                Kocok Ulang
               </Button>
             </div>
           )}
